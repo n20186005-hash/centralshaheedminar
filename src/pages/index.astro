@@ -1,0 +1,291 @@
+---
+import '../styles/global.css';
+
+const title = 'কেন্দ্রীয় শহীদ মিনার, ঢাকা — ইতিহাস, যাতায়াত ও ভ্রমণ নির্দেশিকা';
+const description = 'ঢাকার কেন্দ্রীয় শহীদ মিনার সম্পর্কে ইতিহাস, স্থাপত্য, ১৯৫২-এর ভাষা আন্দোলন, যাতায়াত, প্রবেশমূল্য, আশপাশের দর্শনীয় স্থান, খাবার ও ভ্রমণ টিপস।';
+const path = '/';
+const canonical = Astro.site ? new URL(path, Astro.site).toString() : undefined;
+
+const photoHero = 'https://upload.wikimedia.org/wikipedia/commons/3/32/Central_Shahid_Minar_Dhaka_%281%29.jpg';
+const photoPortrait = 'https://upload.wikimedia.org/wikipedia/commons/2/20/Central_Shaheed_Minar_Dhaka_%287%29.jpg';
+const photoWide = 'https://upload.wikimedia.org/wikipedia/commons/6/67/Central_Shaheed_Minar_Dhaka_%289%29.jpg';
+const photoAlt = 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Central_Shaheed_Minar_Dhaka_%284%29.jpg';
+
+const faq = [
+  ['কেন্দ্রীয় শহীদ মিনারে প্রবেশের টিকিট লাগে কি?', 'না। স্মৃতিসৌধটি সাধারণ দর্শনার্থীদের জন্য বিনামূল্যে উন্মুক্ত। বিশেষ রাষ্ট্রীয় বা নিরাপত্তাজনিত কর্মসূচির সময় প্রবেশপথ ও চলাচলে সাময়িক নিয়ন্ত্রণ থাকতে পারে।'],
+  ['কেন্দ্রীয় শহীদ মিনার কি ২৪ ঘণ্টা দেখা যায়?', 'সাধারণভাবে উন্মুক্ত চত্বরটি সার্বক্ষণিক দেখা যায় বলে বিভিন্ন স্থানীয় তালিকায় উল্লেখ আছে। তবে ২১ ফেব্রুয়ারি ও বিশেষ অনুষ্ঠানে নিরাপত্তা ও জনসমাগমের কারণে প্রবেশব্যবস্থা বদলাতে পারে।'],
+  ['মেট্রোরেলে কীভাবে যাব?', 'এমআরটি লাইন–৬-এর ঢাকা বিশ্ববিদ্যালয় স্টেশন সবচেয়ে সুবিধাজনক বিকল্পগুলোর একটি। সেখান থেকে বিশ্ববিদ্যালয় এলাকার ভেতর দিয়ে হেঁটে বা অল্প দূরত্ব রিকশায় শহীদ মিনারে পৌঁছানো যায়।'],
+  ['কতক্ষণ সময় রাখলে ভালো?', 'শুধু স্মৃতিসৌধ দেখা ও শ্রদ্ধা জানানোর জন্য প্রায় ২০–৩০ মিনিট যথেষ্ট। ইতিহাস, স্থাপত্য ও আশপাশের বিশ্ববিদ্যালয় এলাকা ধীরে দেখলে ৪৫–৬০ মিনিট রাখুন।'],
+  ['২১ ফেব্রুয়ারিতে গেলে কী জানা দরকার?', 'একুশে ফেব্রুয়ারিতে বিপুল জনসমাগম, ফুল দিয়ে শ্রদ্ধা নিবেদন এবং বিশেষ নিরাপত্তা ব্যবস্থা থাকে। নির্ধারিত প্রবেশ ও প্রস্থান পথ অনুসরণ করুন এবং সরকারি নির্দেশনা মেনে চলুন।'],
+  ['ছবি তোলার সেরা সময় কখন?', 'সকাল বা বিকেলের নরম আলোতে সাদা স্তম্ভ, লাল বৃত্ত ও সামনের ধাপগুলোর রেখা সবচেয়ে পরিষ্কার ফুটে ওঠে। শ্রদ্ধা নিবেদনের সময় অন্য দর্শনার্থীর ব্যক্তিগত পরিসর সম্মান করুন।'],
+];
+
+const attraction = {
+  '@context': 'https://schema.org',
+  '@type': 'TouristAttraction',
+  name: 'কেন্দ্রীয় শহীদ মিনার',
+  alternateName: ['Central Shaheed Minar', 'Shaheed Minar, Dhaka'],
+  description,
+  ...(canonical ? { url: canonical } : {}),
+  image: [photoHero, photoWide, photoPortrait],
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'ঢাকা মেডিকেল কলেজ গেটের কাছে, সেক্রেটারিয়েট রোড',
+    addressLocality: 'ঢাকা',
+    postalCode: '1000',
+    addressCountry: 'BD',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 23.727238,
+    longitude: 90.396625,
+  },
+  isAccessibleForFree: true,
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+    opens: '00:00',
+    closes: '23:59',
+  },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.6',
+    reviewCount: '20883',
+    bestRating: '5',
+  },
+  sameAs: [
+    'https://beautifulbangladesh.gov.bd/loc/dhaka/92',
+    'https://maps.app.goo.gl/ySi18KGioTbQ5b8d9',
+  ],
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map(([q, a]) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: { '@type': 'Answer', text: a },
+  })),
+};
+---
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content="#141313" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    {canonical && <link rel="canonical" href={canonical} />}
+    <link rel="icon" href="/icons/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/icons/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" href="/icons/favicon-16x16.png" sizes="16x16" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="bn_BD" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={photoHero} />
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json" set:html={JSON.stringify(attraction)}></script>
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
+  </head>
+  <body>
+    <a href="#main" class="focus-ring fixed left-3 top-3 z-[100] -translate-y-24 rounded-full bg-white px-4 py-2 text-sm font-bold shadow-lg focus:translate-y-0">মূল তথ্যাংশে যান</a>
+
+    <header class="absolute inset-x-0 top-0 z-40 border-b border-white/15 text-white">
+      <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4 lg:px-8">
+        <a href="#top" class="focus-ring inline-flex items-center no-underline" aria-label="কেন্দ্রীয় শহীদ মিনার — প্রথম অংশ">
+          <img src="/assets/logo.svg" width="250" height="60" alt="কেন্দ্রীয় শহীদ মিনার" class="h-12 w-auto" />
+        </a>
+        <nav class="hidden items-center gap-6 text-sm font-semibold lg:flex" aria-label="প্রধান নেভিগেশন">
+          <a href="#history" class="hover:text-red-200">ইতিহাস</a>
+          <a href="#visit" class="hover:text-red-200">ভ্রমণ</a>
+          <a href="#nearby" class="hover:text-red-200">আশপাশ</a>
+          <a href="#map" class="hover:text-red-200">মানচিত্র</a>
+          <a href="#faq" class="hover:text-red-200">প্রশ্নোত্তর</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section id="top" class="relative min-h-[92vh] overflow-hidden bg-neutral-950 text-white">
+        <img src={photoHero} alt="ঢাকার কেন্দ্রীয় শহীদ মিনারের বাস্তব দৃশ্য" class="absolute inset-0 h-full w-full object-cover object-center opacity-65" fetchpriority="high" />
+        <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/20"></div>
+        <div class="absolute inset-0 pattern-lines opacity-30"></div>
+        <div class="relative mx-auto flex min-h-[92vh] max-w-7xl items-end px-5 pb-14 pt-32 lg:px-8 lg:pb-20">
+          <div class="max-w-4xl">
+            <p class="mb-5 inline-flex items-center gap-2 rounded-full border border-white/25 bg-black/25 px-4 py-2 text-sm backdrop-blur">
+              <span class="h-2.5 w-2.5 rounded-full bg-[#c5222a]"></span> ১৯৫২-এর ভাষা শহীদদের স্মৃতির জাতীয় স্মারক
+            </p>
+            <h1 class="text-5xl font-black leading-[1.06] tracking-tight sm:text-6xl lg:text-8xl">কেন্দ্রীয়<br /><span class="text-[#e34a50]">শহীদ মিনার</span></h1>
+            <p class="mt-6 max-w-2xl text-lg leading-8 text-stone-200 sm:text-xl">একটি স্থাপত্যের চেয়ে বেশি—বাংলা ভাষার মর্যাদা, আত্মত্যাগ এবং সাংস্কৃতিক পরিচয়ের দৃশ্যমান প্রতীক। ঢাকা মেডিকেল কলেজ ও ঢাকা বিশ্ববিদ্যালয় এলাকার হৃদয়ে দাঁড়িয়ে আছে জাতীয় স্মৃতির এই কেন্দ্র।</p>
+            <div class="mt-8 flex flex-wrap gap-3 text-sm">
+              <span class="rounded-full bg-white/10 px-4 py-2 backdrop-blur">★ ৪.৬ · ২০,৮৮৩ পর্যালোচনা</span>
+              <span class="rounded-full bg-white/10 px-4 py-2 backdrop-blur">প্রবেশমূল্য নেই</span>
+              <span class="rounded-full bg-white/10 px-4 py-2 backdrop-blur">ঢাকা ১০০০</span>
+            </div>
+          </div>
+        </div>
+        <div class="absolute bottom-4 right-4 rounded-md bg-black/60 px-3 py-2 text-[11px] text-white/80">ছবি: Salim Khandoker / Wikimedia Commons · CC BY-SA 3.0</div>
+      </section>
+
+      <section class="border-b border-stone-300/70 bg-[#141313] text-white">
+        <div class="mx-auto grid max-w-7xl grid-cols-2 gap-px bg-white/10 sm:grid-cols-4">
+          <div class="bg-[#141313] p-5 sm:p-7"><p class="text-xs text-stone-400">ধরন</p><p class="mt-1 font-bold">ঐতিহাসিক স্মারক</p></div>
+          <div class="bg-[#141313] p-5 sm:p-7"><p class="text-xs text-stone-400">অবস্থান</p><p class="mt-1 font-bold">ঢাকা বিশ্ববিদ্যালয় এলাকা</p></div>
+          <div class="bg-[#141313] p-5 sm:p-7"><p class="text-xs text-stone-400">প্লাস কোড</p><p class="mt-1 font-bold">P9GW+VJ, ঢাকা</p></div>
+          <div class="bg-[#141313] p-5 sm:p-7"><p class="text-xs text-stone-400">পরামর্শকৃত সময়</p><p class="mt-1 font-bold">৩০–৬০ মিনিট</p></div>
+        </div>
+      </section>
+
+      <section id="history" class="pattern-lines py-20 lg:py-28">
+        <div class="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-[.9fr_1.1fr] lg:px-8">
+          <div class="lg:sticky lg:top-8 lg:self-start">
+            <p class="section-label">কেন এই স্থান গুরুত্বপূর্ণ</p>
+            <h2 class="mt-3 text-4xl font-black leading-tight sm:text-5xl">ভাষার জন্য জীবন দেওয়ার স্মৃতি</h2>
+            <p class="mt-6 text-lg leading-8 text-stone-700">১৯৫২ সালের ২১ ও ২২ ফেব্রুয়ারি বাংলা ভাষাকে রাষ্ট্রভাষার মর্যাদা দেওয়ার দাবিতে আন্দোলনরত শিক্ষার্থী ও কর্মীদের ওপর গুলি চালানো হয়। ঢাকা মেডিকেল কলেজের কাছেই এই রক্তক্ষয়ী ঘটনার স্মৃতি থেকে শহীদ মিনারের জন্ম।</p>
+            <a href="https://beautifulbangladesh.gov.bd/loc/dhaka/92" rel="noopener" class="focus-ring mt-7 inline-flex rounded-full border border-neutral-900 px-5 py-3 font-bold no-underline hover:bg-neutral-950 hover:text-white">বাংলাদেশ ট্যুরিজম বোর্ডের তথ্য →</a>
+          </div>
+          <div class="space-y-5">
+            <article class="memorial-card rounded-[2rem] p-7 sm:p-9"><p class="text-sm font-black text-[#a31d24]">১৯৫২</p><h3 class="mt-2 text-2xl font-black">প্রথম স্মৃতিস্তম্ভ</h3><p class="mt-3 leading-7 text-stone-700">আন্দোলনের শহীদদের স্মরণে ঢাকা মেডিকেল কলেজের শিক্ষার্থীরা ২৩ ফেব্রুয়ারি একটি অস্থায়ী স্মৃতিস্তম্ভ নির্মাণ করেন। অল্প কয়েক দিনের মধ্যেই পুলিশ সেটি ভেঙে দেয়। তবু স্মরণের ধারণাটি আর মুছে যায়নি।</p></article>
+            <article class="memorial-card rounded-[2rem] p-7 sm:p-9"><p class="text-sm font-black text-[#a31d24]">১৯৫৭–১৯৬৩</p><h3 class="mt-2 text-2xl font-black">হামিদুর রহমান ও নভেরা আহমেদের নকশা</h3><p class="mt-3 leading-7 text-stone-700">শিল্পী-স্থপতি হামিদুর রহমানের নকশা ও ভাস্কর নভেরা আহমেদের সহযোগিতায় স্থায়ী স্মৃতিসৌধ নির্মাণ শুরু হয়। সামরিক শাসনে কাজ থেমে গেলেও পরিবর্তিত নকশায় ১৯৬৩ সালে স্মৃতিসৌধ সম্পন্ন হয়।</p></article>
+            <article class="memorial-card rounded-[2rem] p-7 sm:p-9"><p class="text-sm font-black text-[#a31d24]">১৯৭১–১৯৮৩</p><h3 class="mt-2 text-2xl font-black">ধ্বংস, পুনর্নির্মাণ ও সম্প্রসারণ</h3><p class="mt-3 leading-7 text-stone-700">মুক্তিযুদ্ধের শুরুতে স্মৃতিসৌধটি ধ্বংস করা হয়। স্বাধীনতার পরে আবার নির্মাণ করা হয় এবং ১৯৮৩ সালে বর্তমান পরিসরে সম্প্রসারণ ঘটে। আজ এটি ভাষা আন্দোলন ও জাতীয় চেতনার কেন্দ্রীয় প্রতীক।</p></article>
+            <article class="rounded-[2rem] bg-[#c5222a] p-7 text-white sm:p-9"><p class="text-sm font-black text-red-100">বিশ্বজনীন উত্তরাধিকার</p><h3 class="mt-2 text-2xl font-black">২১ ফেব্রুয়ারি — আন্তর্জাতিক মাতৃভাষা দিবস</h3><p class="mt-3 leading-7 text-red-50">বাংলাদেশের উদ্যোগে ইউনেস্কোর সাধারণ সম্মেলন ১৯৯৯ সালে আন্তর্জাতিক মাতৃভাষা দিবস অনুমোদন করে; ২০০০ সাল থেকে বিশ্বজুড়ে ২১ ফেব্রুয়ারি দিনটি পালিত হচ্ছে।</p><a href="https://www.unesco.org/en/days/mother-language" rel="noopener" class="focus-ring mt-5 inline-block font-bold underline">ইউনেস্কোর তথ্য দেখুন</a></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-[#171515] py-20 text-white lg:py-28">
+        <div class="mx-auto max-w-7xl px-5 lg:px-8">
+          <div class="grid items-center gap-10 lg:grid-cols-2">
+            <figure class="relative overflow-hidden rounded-[2.5rem]">
+              <img src={photoWide} alt="কেন্দ্রীয় শহীদ মিনারের সাদা স্তম্ভ ও খোলা প্রাঙ্গণ" class="aspect-[4/3] w-full object-cover" loading="lazy" />
+              <figcaption class="photo-credit absolute inset-x-0 bottom-0 px-5 pb-4 pt-16 text-xs text-stone-200">বাস্তব ছবি · Salim Khandoker / Wikimedia Commons · CC BY-SA 3.0</figcaption>
+            </figure>
+            <div>
+              <p class="text-xs font-black uppercase tracking-[.18em] text-red-400">স্থাপত্যের ভাষা</p>
+              <h2 class="mt-3 text-4xl font-black sm:text-5xl">সাদা স্তম্ভ, লাল বৃত্ত, শোকের নীরবতা</h2>
+              <p class="mt-6 text-lg leading-8 text-stone-300">আধুনিকতাবাদী গঠনভাষায় উঁচু সাদা ফ্রেমগুলো একটি পরিবার—কেন্দ্রে মা, পাশে সন্তানদের—রূপক হিসেবে পড়া হয়। পেছনের লাল সূর্যবৃত্ত রক্ত, উদিত চেতনা ও বাংলার সাংস্কৃতিক প্রতীকের সঙ্গে সংযোগ তৈরি করে।</p>
+              <div class="mt-8 grid gap-4 sm:grid-cols-2">
+                <div class="rounded-2xl border border-white/15 p-5"><p class="text-xs text-stone-400">স্থাপত্যধারা</p><p class="mt-1 text-xl font-bold">আধুনিক / স্মারক স্থাপত্য</p></div>
+                <div class="rounded-2xl border border-white/15 p-5"><p class="text-xs text-stone-400">মূল নকশা</p><p class="mt-1 text-xl font-bold">হামিদুর রহমান · নভেরা আহমেদ</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="visit" class="py-20 lg:py-28">
+        <div class="mx-auto max-w-7xl px-5 lg:px-8">
+          <p class="section-label">ভ্রমণ পরিকল্পনা</p>
+          <h2 class="mt-3 max-w-3xl text-4xl font-black sm:text-5xl">শ্রদ্ধা ও নীরবতার সঙ্গে দেখুন</h2>
+          <div class="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            <article class="memorial-card rounded-3xl p-7"><span class="text-3xl">🎟️</span><h3 class="mt-5 text-xl font-black">টিকিট / খরচ</h3><p class="mt-3 leading-7 text-stone-700">প্রবেশমূল্য নেই। ফুল কিনতে চাইলে ব্যক্তিগত খরচ আলাদা। গাইড বাধ্যতামূলক নয়।</p></article>
+            <article class="memorial-card rounded-3xl p-7"><span class="text-3xl">🕰️</span><h3 class="mt-5 text-xl font-black">সেরা সময় / কতক্ষণ</h3><p class="mt-3 leading-7 text-stone-700">সকাল বা বিকেলের নরম আলো আরামদায়ক। সাধারণ ভ্রমণে ৩০–৬০ মিনিট রাখুন। ২১ ফেব্রুয়ারিতে দীর্ঘ অপেক্ষা ও ভিড়ের জন্য বাড়তি সময় ধরুন।</p></article>
+            <article class="memorial-card rounded-3xl p-7"><span class="text-3xl">🅿️</span><h3 class="mt-5 text-xl font-black">পার্কিং</h3><p class="mt-3 leading-7 text-stone-700">স্মৃতিসৌধে পর্যটকদের জন্য নির্ভরযোগ্য নিজস্ব পার্কিং ধরে পরিকল্পনা করবেন না। বিশ্ববিদ্যালয় ও মেডিকেল এলাকার অনুমোদিত পার্কিং/ড্রপ-অফ ব্যবহার করে হাঁটা বেশি বাস্তবসম্মত।</p></article>
+            <article class="memorial-card rounded-3xl p-7 md:col-span-2 xl:col-span-3"><span class="text-3xl">🚇</span><h3 class="mt-5 text-2xl font-black">বিস্তারিত যাতায়াত</h3><div class="mt-5 grid gap-5 sm:grid-cols-3"><div><p class="font-black">মেট্রো</p><p class="mt-2 leading-7 text-stone-700">এমআরটি লাইন–৬-এর <strong>ঢাকা বিশ্ববিদ্যালয়</strong> স্টেশনে নামুন। সেখান থেকে বিশ্ববিদ্যালয় এলাকার ভেতর দিয়ে হাঁটা বা রিকশা নিন।</p></div><div><p class="font-black">রিকশা / সিএনজি</p><p class="mt-2 leading-7 text-stone-700">শাহবাগ, টিএসসি, দোয়েল চত্বর বা ঢাকা বিশ্ববিদ্যালয় এলাকা থেকে “কেন্দ্রীয় শহীদ মিনার” বললেই চালকেরা সাধারণত স্থানটি চেনেন।</p></div><div><p class="font-black">২১ ফেব্রুয়ারি</p><p class="mt-2 leading-7 text-stone-700">বিশেষ দিনে রাস্তা ও প্রবেশপথ নিয়ন্ত্রিত হতে পারে। পুলিশ/কর্তৃপক্ষের নির্ধারিত প্রবেশ–প্রস্থান পথ ও নিরাপত্তা নির্দেশনা অনুসরণ করুন।</p></div></div></article>
+          </div>
+          <p class="mt-5 text-xs leading-5 text-stone-500">দ্রষ্টব্য: উন্মুক্ত থাকার তথ্য ও যাতায়াত ব্যবস্থা বিশেষ অনুষ্ঠান, নিরাপত্তা নির্দেশনা বা রক্ষণাবেক্ষণের কারণে বদলাতে পারে। যাত্রার আগে বর্তমান অবস্থা যাচাই করা ভালো।</p>
+        </div>
+      </section>
+
+      <section class="bg-[#c5222a] py-20 text-white lg:py-28">
+        <div class="mx-auto grid max-w-7xl gap-8 px-5 lg:grid-cols-[1fr_.8fr] lg:px-8">
+          <div><p class="text-xs font-black uppercase tracking-[.18em] text-red-100">একটি সহজ পদচারণা</p><h2 class="mt-3 text-4xl font-black sm:text-5xl">প্রবেশ → প্রাঙ্গণ → কেন্দ্রীয় স্তম্ভ → নীরব প্রস্থান</h2><p class="mt-6 max-w-2xl text-lg leading-8 text-red-50">প্রথমে সামনের প্রশস্ত ধাপ থেকে পুরো কম্পোজিশন দেখুন। তারপর ধীরে কেন্দ্রীয় স্তম্ভ ও লাল বৃত্তের দিকে এগিয়ে গঠনটি কাছ থেকে দেখুন। ফুল বা স্মরণানুষ্ঠান চললে প্রধান অক্ষ খালি রাখুন এবং দর্শনার্থীর প্রবাহের বিপরীতে দাঁড়াবেন না।</p></div>
+          <ol class="space-y-3 text-lg font-bold"><li class="rounded-2xl bg-white/10 p-5">১ · সামনের ধাপ — সামগ্রিক স্থাপত্য পড়ুন</li><li class="rounded-2xl bg-white/10 p-5">২ · কেন্দ্রীয় অক্ষ — সাদা স্তম্ভ ও লাল বৃত্ত</li><li class="rounded-2xl bg-white/10 p-5">৩ · পাশের কোণ — স্তম্ভের গভীরতা ও ছায়া</li><li class="rounded-2xl bg-white/10 p-5">৪ · প্রস্থান — টিএসসি/কার্জন হলের দিকে হাঁটা</li></ol>
+        </div>
+      </section>
+
+      <section class="py-20 lg:py-28">
+        <div class="mx-auto max-w-7xl px-5 lg:px-8">
+          <div class="grid gap-7 lg:grid-cols-[.75fr_1.25fr]">
+            <figure class="relative overflow-hidden rounded-[2.5rem]"><img src={photoPortrait} alt="সামনের দিক থেকে কেন্দ্রীয় শহীদ মিনারের স্তম্ভ" class="h-full min-h-[520px] w-full object-cover" loading="lazy" /><figcaption class="photo-credit absolute inset-x-0 bottom-0 px-5 pb-4 pt-16 text-xs text-white">Salim Khandoker / Wikimedia Commons · CC BY-SA 3.0</figcaption></figure>
+            <div class="grid gap-7 sm:grid-cols-2">
+              <article class="memorial-card rounded-[2rem] p-7 sm:p-8"><p class="section-label">ছবি তোলার জায়গা ০১</p><h3 class="mt-3 text-2xl font-black">সামনের কেন্দ্রীয় অক্ষ</h3><p class="mt-4 leading-7 text-stone-700">সিঁড়ির নিচের দিক থেকে মাঝ বরাবর ফ্রেম করুন। উল্লম্ব স্তম্ভের সমমিতি ও পেছনের লাল বৃত্ত একই অক্ষে রাখলে স্মৃতিসৌধের প্রতীকী শক্তি স্পষ্ট হয়।</p></article>
+              <article class="memorial-card rounded-[2rem] p-7 sm:p-8"><p class="section-label">ছবি তোলার জায়গা ০২</p><h3 class="mt-3 text-2xl font-black">হালকা পাশের কোণ</h3><p class="mt-4 leading-7 text-stone-700">ডান বা বাম পাশ থেকে ৩০–৪৫ ডিগ্রি কোণে দাঁড়ালে ফ্রেমগুলোর স্তর, দূরত্ব ও গভীরতা ধরা পড়ে। বিকেলের তির্যক আলোতে ছায়া বেশি নাটকীয় হয়।</p></article>
+              <article class="rounded-[2rem] bg-[#171515] p-7 text-white sm:col-span-2 sm:p-8"><p class="text-xs font-black uppercase tracking-[.16em] text-red-400">ফটোগ্রাফির শিষ্টাচার</p><p class="mt-4 text-lg leading-8 text-stone-300">এটি বিনোদনকেন্দ্র নয়, স্মৃতিস্থল। ফুলের বেদি, শোকানুষ্ঠান বা ব্যক্তিগত শ্রদ্ধা নিবেদনের সামনে নাটকীয় পোজ এড়িয়ে চলুন; মানুষকে কাছ থেকে ছবি তুললে সম্মতি নিন।</p></article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="nearby" class="border-y border-stone-300/70 bg-white/50 py-20 lg:py-28">
+        <div class="mx-auto max-w-7xl px-5 lg:px-8">
+          <div class="grid gap-12 lg:grid-cols-2">
+            <div><p class="section-label">আশপাশের দর্শনীয় স্থান</p><h2 class="mt-3 text-4xl font-black">একই হাঁটার পরিধিতে ঢাকার জ্ঞান ও ইতিহাস</h2><div class="mt-7 space-y-4"><div class="memorial-card rounded-2xl p-5"><h3 class="font-black">কার্জন হল</h3><p class="mt-1 text-stone-600">ঢাকা বিশ্ববিদ্যালয়ের ঐতিহাসিক লাল-ইটের স্থাপত্য; শহীদ মিনারের সঙ্গে একটি সুন্দর সাংস্কৃতিক হাঁটা তৈরি করে।</p></div><div class="memorial-card rounded-2xl p-5"><h3 class="font-black">দোয়েল চত্বর</h3><p class="mt-1 text-stone-600">বাংলাদেশের জাতীয় পাখির ভাস্কর্য ও ঢাকা বিশ্ববিদ্যালয় এলাকার পরিচিত মোড়।</p></div><div class="memorial-card rounded-2xl p-5"><h3 class="font-black">সোহরাওয়ার্দী উদ্যান</h3><p class="mt-1 text-stone-600">ঐতিহাসিক জনসমাবেশ, স্বাধীনতার স্মৃতি ও সবুজ পরিসরের জন্য গুরুত্বপূর্ণ।</p></div><div class="memorial-card rounded-2xl p-5"><h3 class="font-black">বাংলাদেশ জাতীয় জাদুঘর</h3><p class="mt-1 text-stone-600">শাহবাগে বাংলাদেশের ইতিহাস, শিল্প, প্রত্নতত্ত্ব ও সাংস্কৃতিক উত্তরাধিকার সম্পর্কে গভীরতর প্রেক্ষাপট পাওয়া যায়।</p></div></div></div>
+            <div><p class="section-label">আশপাশের খাবার</p><h2 class="mt-3 text-4xl font-black">পুরান ঢাকার স্বাদ থেকে ক্যাম্পাসের চা</h2><p class="mt-5 leading-7 text-stone-700">ঢাকা মেডিকেল কলেজ, বিশ্ববিদ্যালয় এলাকা ও শাহবাগের আশপাশে সহজ খাবার, চা, বিরিয়ানি ও স্থানীয় নাস্তার বহু বিকল্প আছে। নির্দিষ্ট দোকানের সময় দ্রুত বদলাতে পারে, তাই খাবারের ধরন ও এলাকা ধরে পরিকল্পনা করাই ভালো।</p><div class="mt-7 grid gap-4 sm:grid-cols-2"><div class="rounded-2xl bg-[#171515] p-5 text-white"><p class="text-sm text-stone-400">ক্যাম্পাস/মেডিকেল এলাকা</p><p class="mt-1 text-xl font-black">চা · সিঙ্গারা · পরোটা · ভাত</p></div><div class="rounded-2xl bg-[#171515] p-5 text-white"><p class="text-sm text-stone-400">শাহবাগ/চানখারপুল দিক</p><p class="mt-1 text-xl font-black">বিরিয়ানি · কাবাব · বাংলা খাবার</p></div></div><div class="mt-7 rounded-3xl border border-[#c5222a]/30 bg-red-50 p-6"><h3 class="font-black text-[#971b20]">খাবারের ছোট পরিকল্পনা</h3><p class="mt-2 leading-7 text-stone-700">শহীদ মিনার → কার্জন হল/দোয়েল চত্বর → শাহবাগ—এই ধারায় হাঁটলে পথে নাস্তা বা দুপুরের খাবারের বিকল্প সহজে পাওয়া যায়।</p></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-20 lg:py-28">
+        <div class="mx-auto max-w-7xl px-5 lg:px-8">
+          <p class="section-label">থাকার জায়গা</p><h2 class="mt-3 text-4xl font-black">কোন এলাকায় থাকবেন?</h2>
+          <div class="mt-8 grid gap-5 md:grid-cols-3"><article class="memorial-card rounded-3xl p-7"><h3 class="text-xl font-black">শাহবাগ</h3><p class="mt-3 leading-7 text-stone-700">শহীদ মিনার, জাদুঘর, বিশ্ববিদ্যালয় এলাকা ও রমনা—পায়ে হাঁটা/স্বল্প যাত্রায় দেখতে চাইলে সবচেয়ে ব্যবহারিক।</p></article><article class="memorial-card rounded-3xl p-7"><h3 class="text-xl font-black">মতিঝিল / পল্টন</h3><p class="mt-3 leading-7 text-stone-700">শহরের কেন্দ্র, ব্যবসায়িক এলাকা ও পুরান ঢাকার দিকে যাতায়াত মিলিয়ে নিতে চাইলে সুবিধাজনক।</p></article><article class="memorial-card rounded-3xl p-7"><h3 class="text-xl font-black">ধানমন্ডি</h3><p class="mt-3 leading-7 text-stone-700">ক্যাফে, খাবার ও আবাসনের বেশি বিকল্প চান এবং শহীদ মিনারে স্বল্প গাড়ি/রাইডে যেতে আপত্তি নেই—এমন ভ্রমণকারীদের জন্য ভালো।</p></article></div>
+          <p class="mt-5 text-sm text-stone-500">হোটেলের নাম, মূল্য ও কক্ষের প্রাপ্যতা দ্রুত বদলায়—বুকিংয়ের সময় সাম্প্রতিক রেটিং, বাতিলের নীতি ও যাতায়াতের সময় যাচাই করুন।</p>
+        </div>
+      </section>
+
+      <section id="map" class="bg-[#171515] py-20 text-white lg:py-28">
+        <div class="mx-auto max-w-7xl px-5 lg:px-8">
+          <div class="mb-8 flex flex-col justify-between gap-5 sm:flex-row sm:items-end"><div><p class="text-xs font-black uppercase tracking-[.18em] text-red-400">মানচিত্র ও ঠিকানা</p><h2 class="mt-3 text-4xl font-black sm:text-5xl">ঢাকা মেডিকেল কলেজের কাছে</h2></div><a href="https://maps.app.goo.gl/ySi18KGioTbQ5b8d9" rel="noopener" class="focus-ring rounded-full bg-white px-5 py-3 font-bold text-neutral-950 no-underline">গুগল ম্যাপে খুলুন ↗</a></div>
+          <div class="overflow-hidden rounded-[2rem] border border-white/10 bg-black"><iframe title="কেন্দ্রীয় শহীদ মিনার — গুগল মানচিত্র" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6249.30973029436!2d90.3940500770538!3d23.7272379786862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8e89cbec039%3A0xe403f93b9b07d016!2sCentral%20Shaheed%20Minar!5e1!3m2!1sbn!2sBD!4v1788751034003!5m2!1sbn!2sBD" width="100%" height="520" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+          <div class="mt-6 grid gap-4 sm:grid-cols-3"><div><p class="text-xs text-stone-500">ঠিকানা</p><p class="mt-1 font-bold">ঢাকা মেডিকেল কলেজ গেটের কাছে, সেক্রেটারিয়েট রোড, ঢাকা ১০০০</p></div><div><p class="text-xs text-stone-500">স্থানাঙ্ক</p><p class="mt-1 font-bold">২৩.৭২৭২৩৮, ৯০.৩৯৬৬২৫</p></div><div><p class="text-xs text-stone-500">প্লাস কোড</p><p class="mt-1 font-bold">P9GW+VJ, ঢাকা</p></div></div>
+        </div>
+      </section>
+
+      <section id="faq" class="py-20 lg:py-28">
+        <div class="mx-auto max-w-4xl px-5 lg:px-8"><p class="section-label">সাধারণ প্রশ্ন</p><h2 class="mt-3 text-4xl font-black sm:text-5xl">যাওয়ার আগে যা জানা ভালো</h2><div class="mt-8 divide-y divide-stone-300 border-y border-stone-300">{faq.map(([q,a]) => <details class="group py-5"><summary class="focus-ring flex cursor-pointer list-none items-center justify-between gap-5 text-lg font-black"><span>{q}</span><span class="text-[#c5222a] transition group-open:rotate-45">＋</span></summary><p class="max-w-3xl pt-4 leading-7 text-stone-700">{a}</p></details>)}</div></div>
+      </section>
+
+      <section class="pb-20 lg:pb-28">
+        <div class="mx-auto max-w-7xl px-5 lg:px-8">
+          <div class="relative overflow-hidden rounded-[2.5rem] bg-neutral-950 text-white"><img src={photoAlt} alt="কেন্দ্রীয় শহীদ মিনারের আরেকটি বাস্তব দৃশ্য" class="absolute inset-0 h-full w-full object-cover opacity-35" loading="lazy" /><div class="relative p-8 sm:p-12 lg:p-16"><p class="text-xs font-black uppercase tracking-[.18em] text-red-400">বিশ্বস্ত তথ্যসূত্র</p><h2 class="mt-3 max-w-2xl text-3xl font-black sm:text-4xl">স্মৃতি বোঝার জন্য উৎসে ফিরে যান</h2><div class="mt-7 flex flex-wrap gap-3"><a href="https://beautifulbangladesh.gov.bd/loc/dhaka/92" rel="noopener" class="focus-ring rounded-full border border-white/30 px-5 py-3 font-bold no-underline hover:bg-white hover:text-black">বাংলাদেশ ট্যুরিজম বোর্ড</a><a href="https://en.banglapedia.org/index.php?title=Shaheed_Minar" rel="noopener" class="focus-ring rounded-full border border-white/30 px-5 py-3 font-bold no-underline hover:bg-white hover:text-black">বাংলাপিডিয়া</a><a href="https://www.unesco.org/en/days/mother-language" rel="noopener" class="focus-ring rounded-full border border-white/30 px-5 py-3 font-bold no-underline hover:bg-white hover:text-black">ইউনেস্কো</a></div></div></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-stone-300 bg-[#ede5da]">
+      <div class="mx-auto max-w-7xl px-5 py-10 lg:px-8"><div class="flex flex-col justify-between gap-8 sm:flex-row"><div><img src="/assets/logo.svg" width="250" height="60" alt="কেন্দ্রীয় শহীদ মিনার" class="h-12 w-auto" /><p class="mt-4 max-w-lg text-sm leading-6 text-stone-600">এই ওয়েবসাইটটি একটি স্বাধীন ভ্রমণ-তথ্য গাইড; এটি কেন্দ্রীয় শহীদ মিনার, ঢাকা বিশ্ববিদ্যালয়, বাংলাদেশ সরকার বা কোনো সরকারি প্রতিষ্ঠানের অফিসিয়াল ওয়েবসাইট নয়।</p></div><div class="flex flex-wrap items-start gap-4 text-sm font-bold"><a href="#history">ইতিহাস</a><a href="#visit">ভ্রমণ</a><a href="#map">মানচিত্র</a><button id="cookie-settings" type="button" class="cursor-pointer border-0 bg-transparent p-0 font-bold underline">কুকি পছন্দ</button></div></div><div class="mt-8 border-t border-stone-300 pt-5 text-xs leading-5 text-stone-500">ছবি: Salim Khandoker, Wikimedia Commons, CC BY-SA 3.0. ঐতিহাসিক তথ্যের মূল সূত্র: বাংলাদেশ ট্যুরিজম বোর্ড, বাংলাপিডিয়া ও ইউনেস্কো।</div></div>
+    </footer>
+
+    <div id="cookie-banner" class="fixed inset-x-4 bottom-4 z-50 hidden max-w-xl rounded-3xl border border-stone-700 bg-[#171515] p-5 text-white shadow-2xl sm:left-auto sm:right-5">
+      <p class="font-black">পরিমাপের কুকি</p><p class="mt-2 text-sm leading-6 text-stone-300">সাইটের ব্যবহার বুঝতে Google Analytics 4 ব্যবহার করা হয়। চাইলে অনুমতি দিতে বা প্রত্যাখ্যান করতে পারেন।</p><div class="mt-4 flex gap-3"><button data-consent="accept" class="focus-ring rounded-full bg-[#c5222a] px-5 py-2 text-sm font-bold">অনুমতি দিন</button><button data-consent="deny" class="focus-ring rounded-full border border-white/25 px-5 py-2 text-sm font-bold">প্রত্যাখ্যান</button></div>
+    </div>
+
+    <script is:inline>
+      (() => {
+        const key = 'csm-analytics-consent';
+        const id = 'G-HXM22WWPKP';
+        const banner = document.getElementById('cookie-banner');
+        const settings = document.getElementById('cookie-settings');
+        const loadGA = () => {
+          if (window.__csmGA) return;
+          window.__csmGA = true;
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function(){ window.dataLayer.push(arguments); };
+          window.gtag('js', new Date());
+          window.gtag('config', id, { anonymize_ip: true });
+          const s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
+          document.head.appendChild(s);
+        };
+        const set = (value) => {
+          localStorage.setItem(key, value);
+          banner?.classList.add('hidden');
+          if (value === 'accepted') loadGA();
+        };
+        const current = localStorage.getItem(key);
+        if (current === 'accepted') loadGA();
+        else if (!current) banner?.classList.remove('hidden');
+        banner?.querySelector('[data-consent="accept"]')?.addEventListener('click', () => set('accepted'));
+        banner?.querySelector('[data-consent="deny"]')?.addEventListener('click', () => set('denied'));
+        settings?.addEventListener('click', () => banner?.classList.remove('hidden'));
+      })();
+    </script>
+  </body>
+</html>

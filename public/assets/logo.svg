@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 72" role="img" aria-labelledby="t d">
+  <title id="t">কেন্দ্রীয় শহীদ মিনার</title><desc id="d">লাল সূর্য ও সাদা স্তম্ভের স্মারকচিহ্ন</desc>
+  <rect width="300" height="72" rx="14" fill="#141313"/>
+  <circle cx="38" cy="36" r="21" fill="#c5222a"/>
+  <g fill="none" stroke="#fffaf2" stroke-width="5" stroke-linejoin="round">
+    <path d="M18 54V31h10v23"/><path d="M31 54V20h14v34"/><path d="M48 54V31h10v23"/>
+  </g>
+  <text x="75" y="34" fill="#fffaf2" font-family="Noto Sans Bengali,Nirmala UI,sans-serif" font-size="20" font-weight="700">কেন্দ্রীয় শহীদ মিনার</text>
+  <text x="75" y="53" fill="#d6cec4" font-family="Noto Sans Bengali,Nirmala UI,sans-serif" font-size="11">ভাষা • স্মৃতি • মর্যাদা</text>
+</svg>
