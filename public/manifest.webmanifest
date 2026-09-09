@@ -1,0 +1,25 @@
+{
+  "name": "কেন্দ্রীয় শহীদ মিনার, ঢাকা — Central Shaheed Minar Visitor Guide",
+  "short_name": "Central Shaheed Minar",
+  "description": "ঢাকার কেন্দ্রীয় শহীদ মিনার সম্পর্কে ইতিহাস, যাতায়াত, আশপাশের দর্শনীয় স্থান ও ভ্রমণ নির্দেশিকা।",
+  "lang": "bn",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#141313",
+  "theme_color": "#141313",
+  "categories": ["travel", "education", "culture"],
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

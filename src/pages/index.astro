@@ -23,8 +23,9 @@ const faq = [
 const attraction = {
   '@context': 'https://schema.org',
   '@type': 'TouristAttraction',
+  '@id': canonical ? `${canonical}#attraction` : undefined,
   name: 'কেন্দ্রীয় শহীদ মিনার',
-  alternateName: ['Central Shaheed Minar', 'Shaheed Minar, Dhaka'],
+  alternateName: ['Central Shaheed Minar', 'কেন্দ্রীয় শহীদ মিনার, ঢাকা', 'Shaheed Minar, Dhaka'],
   description,
   ...(canonical ? { url: canonical } : {}),
   image: [photoHero, photoWide, photoPortrait],
@@ -40,6 +41,7 @@ const attraction = {
     latitude: 23.727238,
     longitude: 90.396625,
   },
+  hasMap: 'https://maps.app.goo.gl/ySi18KGioTbQ5b8d9',
   isAccessibleForFree: true,
   openingHoursSpecification: {
     '@type': 'OpeningHoursSpecification',
@@ -82,15 +84,22 @@ const faqSchema = {
     <link rel="icon" href="/icons/favicon-32x32.png" sizes="32x32" />
     <link rel="icon" href="/icons/favicon-16x16.png" sizes="16x16" />
     <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Central Shaheed Minar" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="bn_BD" />
+    <meta property="og:site_name" content="Central Shaheed Minar — ঢাকা" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={photoHero} />
+    <meta property="og:image:alt" content="ঢাকার কেন্দ্রীয় শহীদ মিনার — Central Shaheed Minar, Dhaka" />
     {canonical && <meta property="og:url" content={canonical} />}
     <meta name="twitter:card" content="summary_large_image" />
-    <script type="application/ld+json" set:html={JSON.stringify(attraction)}></script>
-    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(attraction)}></script>
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)}></script>
   </head>
   <body>
     <a href="#main" class="focus-ring fixed left-3 top-3 z-[100] -translate-y-24 rounded-full bg-white px-4 py-2 text-sm font-bold shadow-lg focus:translate-y-0">মূল তথ্যাংশে যান</a>
@@ -249,32 +258,38 @@ const faqSchema = {
     </main>
 
     <footer class="border-t border-stone-300 bg-[#ede5da]">
-      <div class="mx-auto max-w-7xl px-5 py-10 lg:px-8"><div class="flex flex-col justify-between gap-8 sm:flex-row"><div><img src="/assets/logo.svg" width="250" height="60" alt="কেন্দ্রীয় শহীদ মিনার" class="h-12 w-auto" /><p class="mt-4 max-w-lg text-sm leading-6 text-stone-600">এই ওয়েবসাইটটি একটি স্বাধীন ভ্রমণ-তথ্য গাইড; এটি কেন্দ্রীয় শহীদ মিনার, ঢাকা বিশ্ববিদ্যালয়, বাংলাদেশ সরকার বা কোনো সরকারি প্রতিষ্ঠানের অফিসিয়াল ওয়েবসাইট নয়।</p></div><div class="flex flex-wrap items-start gap-4 text-sm font-bold"><a href="#history">ইতিহাস</a><a href="#visit">ভ্রমণ</a><a href="#map">মানচিত্র</a><button id="cookie-settings" type="button" class="cursor-pointer border-0 bg-transparent p-0 font-bold underline">কুকি পছন্দ</button></div></div><div class="mt-8 border-t border-stone-300 pt-5 text-xs leading-5 text-stone-500">ছবি: Salim Khandoker, Wikimedia Commons, CC BY-SA 3.0. ঐতিহাসিক তথ্যের মূল সূত্র: বাংলাদেশ ট্যুরিজম বোর্ড, বাংলাপিডিয়া ও ইউনেস্কো।</div></div>
+      <div class="mx-auto max-w-7xl px-5 py-10 lg:px-8"><div class="flex flex-col justify-between gap-8 sm:flex-row"><div><img src="/assets/logo.svg" width="250" height="60" alt="কেন্দ্রীয় শহীদ মিনার" class="h-12 w-auto" /><p class="mt-4 max-w-lg text-sm leading-6 text-stone-600">এই ওয়েবসাইটটি একটি স্বাধীন ভ্রমণ-তথ্য গাইড; এটি কেন্দ্রীয় শহীদ মিনার, ঢাকা বিশ্ববিদ্যালয়, বাংলাদেশ সরকার বা কোনো সরকারি প্রতিষ্ঠানের অফিসিয়াল ওয়েবসাইট নয়।</p></div><div class="flex flex-wrap items-start gap-4 text-sm font-bold"><a href="#history">ইতিহাস</a><a href="#visit">ভ্রমণ</a><a href="#map">মানচিত্র</a><button id="cookie-settings" type="button" class="cursor-pointer border-0 bg-transparent p-0 font-bold underline">কুকি পছন্দ</button></div></div><div class="mt-8 border-t border-stone-300 pt-5 text-xs leading-5 text-stone-500"><p>ছবি: Salim Khandoker, Wikimedia Commons, CC BY-SA 3.0. ঐতিহাসিক তথ্যের মূল সূত্র: বাংলাদেশ ট্যুরিজম বোর্ড, বাংলাপিডিয়া ও ইউনেস্কো।</p><p class="mt-2">এই ওয়েবসাইটে প্রদর্শিত সব ছবির মালিকানা ও কপিরাইট সংশ্লিষ্ট ফটোগ্রাফারের নিজস্ব। ছবিগুলো শুধু তথ্যগত উদ্দেশ্যে প্রদর্শিত হচ্ছে।</p></div></div>
     </footer>
 
     <div id="cookie-banner" class="fixed inset-x-4 bottom-4 z-50 hidden max-w-xl rounded-3xl border border-stone-700 bg-[#171515] p-5 text-white shadow-2xl sm:left-auto sm:right-5">
       <p class="font-black">পরিমাপের কুকি</p><p class="mt-2 text-sm leading-6 text-stone-300">সাইটের ব্যবহার বুঝতে Google Analytics 4 ব্যবহার করা হয়। চাইলে অনুমতি দিতে বা প্রত্যাখ্যান করতে পারেন।</p><div class="mt-4 flex gap-3"><button data-consent="accept" class="focus-ring rounded-full bg-[#c5222a] px-5 py-2 text-sm font-bold">অনুমতি দিন</button><button data-consent="deny" class="focus-ring rounded-full border border-white/25 px-5 py-2 text-sm font-bold">প্রত্যাখ্যান</button></div>
     </div>
 
-    <script is:inline>
+    <script>
       (() => {
         const key = 'csm-analytics-consent';
         const id = 'G-HXM22WWPKP';
         const banner = document.getElementById('cookie-banner');
         const settings = document.getElementById('cookie-settings');
+        type GtagFn = (...args: unknown[]) => void;
+        const w = window as typeof window & {
+          __csmGA?: boolean;
+          dataLayer?: unknown[];
+          gtag?: GtagFn;
+        };
         const loadGA = () => {
-          if (window.__csmGA) return;
-          window.__csmGA = true;
-          window.dataLayer = window.dataLayer || [];
-          window.gtag = function(){ window.dataLayer.push(arguments); };
-          window.gtag('js', new Date());
-          window.gtag('config', id, { anonymize_ip: true });
+          if (w.__csmGA) return;
+          w.__csmGA = true;
+          w.dataLayer = w.dataLayer || [];
+          w.gtag = function (...args: unknown[]) { (w.dataLayer as unknown[]).push(args); };
+          w.gtag('js', new Date());
+          w.gtag('config', id, { anonymize_ip: true });
           const s = document.createElement('script');
           s.async = true;
           s.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
           document.head.appendChild(s);
         };
-        const set = (value) => {
+        const set = (value: string) => {
           localStorage.setItem(key, value);
           banner?.classList.add('hidden');
           if (value === 'accepted') loadGA();
@@ -285,6 +300,11 @@ const faqSchema = {
         banner?.querySelector('[data-consent="accept"]')?.addEventListener('click', () => set('accepted'));
         banner?.querySelector('[data-consent="deny"]')?.addEventListener('click', () => set('denied'));
         settings?.addEventListener('click', () => banner?.classList.remove('hidden'));
+        if ('serviceWorker' in navigator) {
+          window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js').catch(() => {});
+          });
+        }
       })();
     </script>
   </body>

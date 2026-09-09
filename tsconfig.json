@@ -4,5 +4,6 @@
     "allowJs": true,
     "checkJs": true,
     "noUncheckedIndexedAccess": true
-  }
+  },
+  "exclude": ["dist", "node_modules", "public"]
 }
