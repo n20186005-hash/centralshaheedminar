@@ -1,0 +1,186 @@
+---
+import '../styles/global.css';
+import { ATTRACTION, SITE_NAME } from '../data/site';
+import {
+  htmlLang,
+  hreflangAlternates,
+  localizedPath,
+  ogLocale,
+  ui,
+  type Locale,
+} from '../i18n';
+import { organizationSchema, websiteSchema } from '../lib/schema';
+import { guides, guideNavLabel } from '../content/guides';
+
+interface Props {
+  locale: Locale;
+  /** bn-সংস্করণের পথ, যেমন '/' বা '/history/' — hreflang ও canonical এখান থেকে বের হয়। */
+  path: string;
+  title: string;
+  description: string;
+  schema?: Record<string, unknown>[];
+  navMode?: 'anchors' | 'pages';
+}
+
+const { locale, path, title, description, schema = [], navMode = 'pages' } = Astro.props;
+
+const site = Astro.site ? Astro.site.toString().replace(/\/$/, '') : undefined;
+const canonicalUrl = site ? new URL(path, `${site}/`).toString() : undefined;
+const alternates = hreflangAlternates(path);
+const otherLocale: Locale = locale === 'bn' ? 'en' : 'bn';
+const switchHref = localizedPath(otherLocale, path);
+const t = ui[locale];
+const ogImage = new URL(ATTRACTION.photos.og, site ?? 'https://centralshaheedminar.com').toString();
+
+const guideLinks = (['history', 'visit', 'nearby'] as const).map((id) => ({
+  href: localizedPath(locale, `/${id}/`),
+  label: guideNavLabel[id][locale],
+  title: guides[id][locale].h1,
+}));
+
+const jsonLd = [websiteSchema(locale), organizationSchema(), ...schema];
+---
+
+<!doctype html>
+<html lang={htmlLang[locale]}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content="#141313" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+    {alternates.map((alt) => <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />)}
+    <link rel="alternate" hreflang={otherLocale === 'bn' ? 'bn-BD' : 'en'} href={switchHref} title={ui[otherLocale].langName} />
+
+    <link rel="icon" href="/icons/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/icons/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" href="/icons/favicon-16x16.png" sizes="16x16" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Central Shaheed Minar" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content={ogLocale[locale]} />
+    <meta property="og:locale:alternate" content={ogLocale[otherLocale]} />
+    <meta property="og:site_name" content={SITE_NAME[locale]} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content={`${ATTRACTION.name[locale]} — ${ATTRACTION.city[locale]}`} />
+    {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    {jsonLd.map((item) => <script type="application/ld+json" is:inline set:html={JSON.stringify(item)}></script>)}
+  </head>
+  <body>
+    <a href="#main" class="focus-ring fixed left-3 top-3 z-[100] -translate-y-24 rounded-full bg-white px-4 py-2 text-sm font-bold shadow-lg focus:translate-y-0">{t.skipToContent}</a>
+
+    <header class="border-b border-stone-300 bg-[#ede5da]/95 backdrop-blur">
+      <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-5 py-4 lg:px-8">
+        <a href={localizedPath(locale, '/')} class="focus-ring inline-flex items-center no-underline" aria-label={ATTRACTION.name[locale]}>
+          <img src="/assets/logo.svg" width="250" height="60" alt={ATTRACTION.name[locale]} class="h-12 w-auto" />
+        </a>
+        <nav class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-semibold" aria-label={locale === 'bn' ? 'প্রধান নেভিগেশন' : 'Main navigation'}>
+          {
+            navMode === 'anchors'
+              ? t.nav.map((item) => <a href={item.href} class="hover:text-[#971b20]">{item.label}</a>)
+              : guideLinks.map((item) => <a href={item.href} title={item.title} class="hover:text-[#971b20]">{item.label}</a>)
+          }
+          <a
+            href={switchHref}
+            hreflang={otherLocale === 'bn' ? 'bn-BD' : 'en'}
+            lang={htmlLang[otherLocale]}
+            class="focus-ring rounded-full border border-neutral-900 px-3 py-1 no-underline hover:bg-neutral-950 hover:text-white"
+            aria-label={`${t.langSwitchLabel}: ${ui[otherLocale].langName}`}
+          >
+            {otherLocale === 'bn' ? 'বাংলা' : 'EN'}
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="border-t border-stone-300 bg-[#ede5da]">
+      <div class="mx-auto max-w-7xl px-5 py-10 lg:px-8">
+        <div class="flex flex-col justify-between gap-8 sm:flex-row">
+          <div>
+            <img src="/assets/logo.svg" width="250" height="60" alt={ATTRACTION.name[locale]} class="h-12 w-auto" />
+            <p class="mt-4 max-w-lg text-sm leading-6 text-stone-600">{t.footer.about}</p>
+          </div>
+          <div class="flex flex-wrap items-start gap-4 text-sm font-bold">
+            <a href={localizedPath(locale, '/')}>{t.home}</a>
+            {guideLinks.map((item) => <a href={item.href} title={item.title}>{item.label}</a>)}
+            <button id="cookie-settings" type="button" class="cursor-pointer border-0 bg-transparent p-0 font-bold underline">{t.footer.cookieSettings}</button>
+          </div>
+        </div>
+        <div class="mt-8 border-t border-stone-300 pt-5 text-xs leading-5 text-stone-500">
+          <p>{t.footer.photoCredit}</p>
+          <p class="mt-2">{t.footer.copyright}</p>
+        </div>
+      </div>
+    </footer>
+
+    <div id="cookie-banner" class="fixed inset-x-4 bottom-4 z-50 hidden max-w-xl rounded-3xl border border-stone-700 bg-[#171515] p-5 text-white shadow-2xl sm:left-auto sm:right-5">
+      <p class="font-black">{t.consent.title}</p>
+      <p class="mt-2 text-sm leading-6 text-stone-300">{t.consent.body}</p>
+      <div class="mt-4 flex gap-3">
+        <button data-consent="accept" class="focus-ring rounded-full bg-[#c5222a] px-5 py-2 text-sm font-bold">{t.consent.accept}</button>
+        <button data-consent="deny" class="focus-ring rounded-full border border-white/25 px-5 py-2 text-sm font-bold">{t.consent.deny}</button>
+      </div>
+    </div>
+
+    <script>
+      import { GA4_ID } from '../data/site';
+      (() => {
+        type GAWindow = Window & {
+          __csmGA?: boolean;
+          dataLayer?: unknown[];
+          gtag?: (...args: unknown[]) => void;
+        };
+        const w = window as GAWindow;
+        const key = 'csm-analytics-consent';
+        const id = GA4_ID;
+        const banner = document.getElementById('cookie-banner');
+        const settings = document.getElementById('cookie-settings');
+        const loadGA = () => {
+          if (w.__csmGA) return;
+          w.__csmGA = true;
+          w.dataLayer = w.dataLayer || [];
+          w.gtag = function (...args: unknown[]) { (w.dataLayer as unknown[]).push(args); };
+          w.gtag('js', new Date());
+          w.gtag('config', id, { anonymize_ip: true });
+          const s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
+          document.head.appendChild(s);
+        };
+        const set = (value) => {
+          localStorage.setItem(key, value);
+          banner?.classList.add('hidden');
+          if (value === 'accepted') loadGA();
+        };
+        const current = localStorage.getItem(key);
+        if (current === 'accepted') loadGA();
+        else if (!current) banner?.classList.remove('hidden');
+        banner?.querySelector('[data-consent="accept"]')?.addEventListener('click', () => set('accepted'));
+        banner?.querySelector('[data-consent="deny"]')?.addEventListener('click', () => set('denied'));
+        settings?.addEventListener('click', () => banner?.classList.remove('hidden'));
+        if ('serviceWorker' in navigator) {
+          window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js').catch(() => {});
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>

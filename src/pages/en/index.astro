@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import HomeContent from '../../components/HomeContent.astro';
+import { homeContent } from '../../content/home';
+import { attractionSchema, faqSchema } from '../../lib/schema';
+
+const locale = 'en' as const;
+const content = homeContent[locale];
+---
+
+<BaseLayout
+  locale={locale}
+  path="/"
+  title={content.title}
+  description={content.description}
+  navMode="anchors"
+  schema={[attractionSchema(locale, content.description), faqSchema(content.faq.items)]}
+>
+  <HomeContent locale={locale} />
+</BaseLayout>

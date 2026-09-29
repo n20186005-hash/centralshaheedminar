@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GuideContent from '../../components/GuideContent.astro';
+import { guides } from '../../content/guides';
+import { withSiteName } from '../../data/site';
+import { breadcrumbSchema, faqSchema } from '../../lib/schema';
+import { SITE } from '../../i18n';
+
+const locale = 'en' as const;
+const content = guides.nearby[locale];
+const url = `${SITE}/en/nearby/`;
+---
+
+<BaseLayout
+  locale={locale}
+  path="/nearby/"
+  title={withSiteName(locale, content.title)}
+  description={content.description}
+  schema={[
+    faqSchema(content.faq),
+    breadcrumbSchema([
+      { name: 'Home', url: `${SITE}/en/` },
+      { name: content.h1, url },
+    ]),
+  ]}
+>
+  <GuideContent locale={locale} id="nearby" />
+</BaseLayout>

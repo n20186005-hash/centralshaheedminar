@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GuideContent from '../components/GuideContent.astro';
+import { guides } from '../content/guides';
+import { withSiteName } from '../data/site';
+import { breadcrumbSchema, faqSchema } from '../lib/schema';
+import { SITE } from '../i18n';
+
+const locale = 'bn' as const;
+const content = guides.visit[locale];
+const url = `${SITE}/visit/`;
+---
+
+<BaseLayout
+  locale={locale}
+  path="/visit/"
+  title={withSiteName(locale, content.title)}
+  description={content.description}
+  schema={[
+    faqSchema(content.faq),
+    breadcrumbSchema([
+      { name: 'প্রচ্ছদ', url: `${SITE}/` },
+      { name: content.h1, url },
+    ]),
+  ]}
+>
+  <GuideContent locale={locale} id="visit" />
+</BaseLayout>

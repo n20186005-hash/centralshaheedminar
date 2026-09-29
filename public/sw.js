@@ -1,7 +1,11 @@
 /* কেন্দ্রীয় শহীদ মিনার — offline service worker */
-const VERSION = 'csm-v1';
+const VERSION = 'csm-v2';
 const CORE = [
   '/',
+  '/en/',
+  '/history/',
+  '/visit/',
+  '/nearby/',
   '/manifest.webmanifest',
   '/icons/icon-192.png',
   '/icons/icon-512.png',

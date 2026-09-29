@@ -1,6 +1,10 @@
 # Central Shaheed Minar — Astro / Cloudflare Workers
 
-孟加拉语单页景点站，围绕中央烈士纪念碑（কেন্দ্রীয় শহীদ মিনার）的纪念性气质设计。
+孟加拉语 + 英语双语景点站，围绕中央烈士纪念碑（কেন্দ্রীয় শহীদ মিনার / Central Shaheed Minar）的纪念性气质设计。
+
+- 孟加拉语：`/` `/history/` `/visit/` `/nearby/`
+- 英语：`/en/` `/en/history/` `/en/visit/` `/en/nearby/`
+- 每个页面都输出 `canonical` + `hreflang`（bn-BD / en / x-default），英语版用于承接国际查询。
 
 ## 技术栈
 
@@ -17,13 +21,29 @@
 
 ## 域名唯一配置点
 
-只修改 `astro.config.mjs` 中的：
+域名在两处保持一致：
 
-```js
-const siteUrl = '';
+- `astro.config.mjs` 的 `siteUrl`（决定 canonical / `og:url` / sitemap 是否产出）
+- `src/i18n.ts` 的 `SITE`（决定 hreflang 绝对地址与 JSON-LD 的 `@id`）
+
+## 内容组织
+
+- `src/data/site.ts` — 纪念碑的唯一事实源：名称、地址、坐标、Plus Code、地图链接、评分（4.6 / 20,897）、照片路径、GA4 ID，以及 SEO 站点名（`SITE_NAME`，格式：景点 + 城市 + 旅游指南）与 `withSiteName()`。
+- `src/i18n.ts` — 语言列表、`localizedPath()`、`hreflangAlternates()` 与界面文案字典（导航、页脚、Cookie 提示等）。
+- `src/content/home.ts` — 首页全部文案（bn / en）。
+- `src/content/guides.ts` — 三个专题页（history / visit / nearby）的文案（bn / en）。
+- `src/lib/schema.ts` — JSON-LD 构造：WebSite、Organization、TouristAttraction + LandmarksOrHistoricalBuildings、FAQPage、BreadcrumbList。
+- `src/layouts/BaseLayout.astro` — TDK、canonical、hreflang、Open Graph / Twitter Card、JSON-LD、页头语言切换与页脚。
+
+新增语言时同步 `src/i18n.ts`、`src/content/*.ts` 两处即可，页面文件无需改动。
+
+## 图片
+
+`public/gallery` 存放纪念碑实拍图。`scripts/optimize-images.py` 会把它们压缩到最大宽度 1600 px，并由 hero 图生成 1200×630 的 `public/images/og-cover.jpg`：
+
+```bash
+python scripts/optimize-images.py
 ```
-
-为空时不输出 canonical / `og:url`，且不启用 sitemap；填写真实域名后 canonical、Open Graph、JSON-LD 与 sitemap 会从 `Astro.site` 派生。
 
 ## Cloudflare Workers
 
@@ -41,13 +61,11 @@ pnpm wrangler deploy
 
 ## GA4 与 Cookie
 
-GA4 ID 为 `G-HXM22WWPKP`。页面默认不会加载 Google Analytics；用户同意分析 Cookie 后才动态加载 gtag。
+GA4 ID 为 `G-HXM22WWPKP`（常量在 `src/data/site.ts`）。页面默认不会加载 Google Analytics；用户同意分析 Cookie 后才动态加载 gtag。
 
-## 图片
+## 安全头
 
-页面使用 Wikimedia Commons 上 Central Shaheed Minar 的真实照片，并在页面与 `public/media/PHOTO-SOURCES.md` 中标明作者和 CC BY-SA 3.0 授权来源。
-
-当前执行环境无法解析外部域名，因此无法把这些 JPG 二进制文件下载进 ZIP；源码中保留了可直接显示的 Wikimedia 原图 URL。详见 `QA-STATUS.md`。
+`public/_headers` 下发 HSTS、`X-Content-Type-Options`、`X-Frame-Options`、`Referrer-Policy`、`Permissions-Policy` 与 CSP（允许 Google Maps iframe 与 GA）。HTTP → HTTPS 的 301 由 Cloudflare 控制台的 Always Use HTTPS 完成。
 
 ## 资料来源
 
