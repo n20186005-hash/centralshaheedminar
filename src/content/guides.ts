@@ -143,7 +143,7 @@ export const guides: Record<GuideId, Record<Locale, GuideContent>> = {
   visit: {
     bn: {
       slug: 'visit',
-      title: 'কেন্দ্রীয় শহীদ মিনার কীভাবে যাবেন — সময়, প্রবেশমূল্য, মেট্রো রুট ও শিষ্টাচার',
+      title: 'কেন্দ্রীয় শহীদ মিনার কীভাবে যাবেন — প্রবেশ যাচাই, মেট্রো ও শিষ্টাচার',
       description:
         'কেন্দ্রীয় শহীদ মিনারে যাতায়াত: এমআরটি লাইন–৬-এর ঢাকা বিশ্ববিদ্যালয় স্টেশন, রিকশা/সিএনজি, প্রবেশমূল্য, খোলার সময়, কতক্ষণ দেখবেন, পার্কিং, ২১ ফেব্রুয়ারির ব্যবস্থা ও শিষ্টাচার।',
       h1: 'কেন্দ্রীয় শহীদ মিনার: কীভাবে যাবেন',
@@ -159,7 +159,7 @@ export const guides: Record<GuideId, Record<Locale, GuideContent>> = {
         {
           heading: 'খোলার সময় ও প্রবেশমূল্য',
           paragraphs: [
-            'উন্মুক্ত চত্বর হওয়ায় সাধারণভাবে এটি সার্বক্ষণিক দেখা যায় বলে স্থানীয় তালিকায় উল্লেখ আছে, এবং কোনো প্রবেশমূল্য নেই। তবে রাষ্ট্রীয় অনুষ্ঠান, নিরাপত্তাজনিত কারণে বা রক্ষণাবেক্ষণের সময় প্রবেশে সাময়িক নিয়ন্ত্রণ থাকতে পারে।',
+            '২৬ অক্টোবর ২০২৬ যাচাই করা মূল Google Maps তালিকায় খোলার সময় দেওয়া ছিল না। ঢাকা বিশ্ববিদ্যালয়ের ২০২৪ সালের বিবরণ জনসাধারণের প্রবেশের কথা বলে, কিন্তু বর্তমান ঘণ্টা বা ফি নিশ্চিত করে না। যাওয়ার আগে বর্তমান প্রবেশের শর্ত যাচাই করুন।',
             'দীর্ঘ ছুটি বা বিশেষ তারিখে যাওয়ার আগে সেদিনের ব্যবস্থা যাচাই করাই নিরাপদ।',
           ],
         },
@@ -204,21 +204,21 @@ export const guides: Record<GuideId, Record<Locale, GuideContent>> = {
         },
       ],
       faq: [
-        ['প্রবেশের টিকিট লাগে কি?', 'না, প্রবেশমূল্য নেই। তবে বিশেষ অনুষ্ঠানের সময় প্রবেশপথে সাময়িক নিয়ন্ত্রণ থাকতে পারে।'],
+        ['প্রবেশের টিকিট লাগে কি?', 'বর্তমান ফি বা প্রবেশের শর্ত নির্ভরযোগ্য প্রকাশিত সূত্রে নিশ্চিত করা যায়নি। বিশেষ অনুষ্ঠান ও নিরাপত্তার নির্দেশনা আগে যাচাই করুন।'],
         ['সবচেয়ে কাছের মেট্রো স্টেশন কোনটি?', 'এমআরটি লাইন–৬-এর ঢাকা বিশ্ববিদ্যালয় স্টেশন—সেখান থেকে হাঁটা বা স্বল্প রিকশা যাত্রা।'],
         ['কখন যাওয়া সবচেয়ে ভালো?', 'সকাল বা বিকেল—আলো নরম ও গরম কম। ২১ ফেব্রুয়ারিতে ভিড় ও নিরাপত্তা ব্যবস্থার জন্য বাড়তি সময় রাখুন।'],
         ['কতক্ষণ দেখা উচিত?', 'সংক্ষিপ্ত শ্রদ্ধা নিবেদনে ২০–৩০ মিনিট; ইতিহাস, স্থাপত্য ও আশপাশ মিলিয়ে ৪৫–৬০ মিনিট।'],
-        ['গাড়ি পার্কিং আছে কি?', 'নির্ভরযোগ্য নিজস্ব পর্যটক পার্কিং নেই—অনুমোদিত পার্কিং/ড্রপ-অফ ব্যবহার করে হাঁটার পরিকল্পনা করুন।'],
+        ['গাড়ি পার্কিং আছে কি?', 'এই গাইডে বর্তমান নির্দিষ্ট পর্যটক পার্কিংয়ের ব্যবস্থা নিশ্চিত করা হয়নি। বৈধ পার্কিং বা নামার স্থান আগে যাচাই করুন।'],
       ],
     },
     en: {
       slug: 'visit',
-      title: 'How to Visit Central Shaheed Minar — Timings, Entry Fee, MRT Route & Etiquette',
+      title: 'Visit Central Shaheed Minar — Access Checks, MRT & Etiquette',
       description:
         'How to get to the Central Shaheed Minar: Dhaka University station on MRT Line 6, rickshaw and CNG options, entry fee, opening hours, how long to allow, parking, 21 February arrangements and visitor etiquette.',
       h1: 'How to visit the Central Shaheed Minar',
       lead:
-        'The monument stands near the Dhaka Medical College gate on Secretariat Road, within walking distance of the University of Dhaka area. Below you will find timings, entry fee, metro and rickshaw routes, and arrangements for special days.',
+        'The monument stands near the Dhaka Medical College gate on Secretariat Road, within walking distance of the University of Dhaka area. Use this guide to check access conditions, consider transport options and prepare for special days.',
       sections: [
         {
           heading: 'Address and coordinates',
@@ -229,7 +229,7 @@ export const guides: Record<GuideId, Record<Locale, GuideContent>> = {
         {
           heading: 'Opening hours and entry fee',
           paragraphs: [
-            'Because it is an open courtyard, local listings generally describe it as viewable at all hours, and there is no entry fee. State programmes, security reasons or maintenance can, however, bring temporary restrictions on access.',
+            'The main Google Maps listing checked on 26 October 2026 supplied no opening hours. A University of Dhaka report labelled 2024 describes public access, but does not establish current hours or fees. Confirm current access arrangements before travelling.',
             'On long holidays or special dates it is safer to check that day’s arrangements before setting out.',
           ],
         },
@@ -274,11 +274,11 @@ export const guides: Record<GuideId, Record<Locale, GuideContent>> = {
         },
       ],
       faq: [
-        ['Is a ticket required?', 'No, there is no entry fee. During special programmes, however, entry routes may be temporarily regulated.'],
+        ['Is a ticket required?', 'Current fees and entry conditions have not been confirmed by a current published operator notice. Check event and security arrangements before travelling.'],
         ['Which metro station is closest?', 'Dhaka University station on MRT Line 6 — from there it is a walk or a short rickshaw ride.'],
         ['When is the best time to visit?', 'Morning or late afternoon, when the light is soft and the heat is lower. On 21 February allow extra time for crowds and security.'],
         ['How long should I plan for?', '20–30 minutes for a short tribute; 45–60 minutes if you include the history, architecture and surroundings.'],
-        ['Is there car parking?', 'There is no reliable dedicated visitor parking — plan to use authorised parking or a drop-off and walk.'],
+        ['Is there car parking?', 'This guide has not confirmed current dedicated visitor parking arrangements. Check legal parking or drop-off locations before travelling.'],
       ],
     },
   },
@@ -288,10 +288,10 @@ export const guides: Record<GuideId, Record<Locale, GuideContent>> = {
       slug: 'nearby',
       title: 'কেন্দ্রীয় শহীদ মিনারের আশেপাশে — দর্শনীয় স্থান, খাবার ও থাকার জায়গা',
       description:
-        'শহীদ মিনারের হাঁটার দূরত্বে কার্জন হল, দোয়েল চত্বর, সোহরাওয়ার্দী উদ্যান, বাংলাদেশ জাতীয় জাদুঘর, শাহবাগের খাবার ও থাকার জন্য ভালো এলাকা।',
+        'শহীদ মিনারের হাঁটার দূরত্বে কার্জন হল, দোয়েল চত্বর, সোহরাওয়ার্দী উদ্যান, বাংলাদেশ জাতীয় জাদুঘর, খাবার ও থাকার পরিকল্পনায় যাচাইয়ের বিষয়।',
       h1: 'শহীদ মিনারের আশেপাশে কী দেখবেন',
       lead:
-        'স্মৃতিসৌধটি ঢাকা বিশ্ববিদ্যালয় এলাকার মাঝে—ফলে একই হাঁটায় বিশ্ববিদ্যালয়ের ঐতিহাসিক স্থাপত্য, শাহবাগের জাদুঘর ও উদ্যান দেখা যায়। নিচে একটি বাস্তবসম্মত হাঁটার ক্রম দেওয়া হলো।',
+        'স্মৃতিসৌধটি ঢাকা বিশ্ববিদ্যালয় এলাকার মাঝে—তবে বিশ্ববিদ্যালয়ের স্থাপত্য, জাদুঘর ও উদ্যানের বর্তমান প্রবেশ ও সময় আলাদাভাবে নিশ্চিত করতে হবে। নিচে একটি বাস্তবসম্মত হাঁটার ক্রম দেওয়া হলো।',
       sections: [
         {
           heading: 'এক হাঁটায় মিলে যায় এমন স্থান',
@@ -304,7 +304,7 @@ export const guides: Record<GuideId, Record<Locale, GuideContent>> = {
         },
         {
           heading: 'প্রস্তাবিত হাঁটার ক্রম',
-          paragraphs: ['শহীদ মিনার → কার্জন হল/দোয়েল চত্বর → টিএসসি → শাহবাগ (জাদুঘর) — এই ধারায় হাঁটলে পথে নাস্তা বা দুপুরের খাবারের বিকল্পও সহজে পাওয়া যায়।'],
+          paragraphs: ['শহীদ মিনার, কার্জন হল/দোয়েল চত্বর, টিএসসি বা শাহবাগ থেকে বর্তমান প্রবেশ ও নিজের চলাচলের উপযোগী স্থান বেছে নিন। খাবারের বিরতির স্থান ও সময় আলাদাভাবে যাচাই করুন।'],
           bullets: [
             '১ · শহীদ মিনার — প্রধান অক্ষ ও লাল বৃত্ত',
             '২ · কার্জন হল — লাল-ইটের ঐতিহাসিক স্থাপত্য',
@@ -315,34 +315,34 @@ export const guides: Record<GuideId, Record<Locale, GuideContent>> = {
         {
           heading: 'খাবার',
           paragraphs: [
-            'ঢাকা মেডিকেল কলেজ, বিশ্ববিদ্যালয় এলাকা ও শাহবাগের আশপাশে সহজ খাবার, চা, বিরিয়ানি ও স্থানীয় নাস্তার বহু বিকল্প আছে।',
-            'নির্দিষ্ট দোকানের সময় দ্রুত বদলাতে পারে, তাই খাবারের ধরন ও এলাকা ধরে পরিকল্পনা করাই ভালো—ক্যাম্পাস/মেডিকেল এলাকায় চা, সিঙ্গারা, পরোটা, ভাত; শাহবাগ/চানখারপুল দিকে বিরিয়ানি, কাবাব ও বাংলা খাবার।',
+            'খাবারের বিরতির জন্য মেডিকেল কলেজ, বিশ্ববিদ্যালয় এলাকা বা শাহবাগে আপনার পথের সঙ্গে মানানসই স্থান খুঁজতে পারেন। এই গাইড কোনো বর্তমান দোকান, মেনু বা খোলার সময় যাচাই করেনি।',
+            'চা-নাস্তা বা পূর্ণ খাবারের স্থান বাছার আগে বর্তমান ঠিকানা, মেনু, মূল্য, খোলার সময় ও নিজের খাদ্যসংক্রান্ত চাহিদা যাচাই করুন। নিচের এলাকাগুলি খোঁজার প্রস্তাব, যাচাই করা দোকানের তালিকা নয়।',
           ],
         },
         {
           heading: 'থাকার জন্য এলাকা',
           paragraphs: [
-            'শাহবাগ: শহীদ মিনার, জাদুঘর, বিশ্ববিদ্যালয় এলাকা ও রমনা—পায়ে হাঁটা বা স্বল্প যাত্রায় দেখতে চাইলে সবচেয়ে ব্যবহারিক।',
-            'মতিঝিল/পল্টন: শহরের কেন্দ্র, ব্যবসায়িক এলাকা ও পুরান ঢাকার দিকে যাতায়াত মিলিয়ে নিতে চাইলে সুবিধাজনক।',
-            'ধানমন্ডি: ক্যাফে, খাবার ও আবাসনের বেশি বিকল্প চাইলে; শহীদ মিনারে স্বল্প গাড়ি যাত্রা মেনে নিতে হবে।',
+            'শাহবাগ: থাকার সম্ভাব্য এলাকা হিসেবে তুলনা করুন; নির্দিষ্ট আবাসন, বর্তমান যাতায়াত ও হাঁটার পথ আলাদাভাবে যাচাই করুন।',
+            'মতিঝিল/পল্টন: শহরের অন্য গন্তব্যের সঙ্গে মিলিয়ে থাকার এলাকা হিসেবে তুলনা করতে পারেন; নির্দিষ্ট ঠিকানা ও বর্তমান যাতায়াত যাচাই করুন।',
+            'ধানমন্ডি: থাকার সম্ভাব্য এলাকা হিসেবে তুলনা করুন; বর্তমান প্রাপ্যতা, যাতায়াতের খরচ ও যানজট যাচাই করুন।',
           ],
         },
       ],
       faq: [
         ['শহীদ মিনারের সবচেয়ে কাছের দর্শনীয় স্থান কোনটি?', 'কার্জন হল ও দোয়েল চত্বর—দুটিই ঢাকা বিশ্ববিদ্যালয় এলাকায় হাঁটার দূরত্বে।'],
-        ['একদিনে কী কী দেখা যায়?', 'শহীদ মিনার → কার্জন হল → দোয়েল চত্বর → টিএসসি → শাহবাগের জাতীয় জাদুঘর—একটি আরামদায়ক অর্ধ-দিনের হাঁটা।'],
-        ['আশেপাশে কোথায় খাওয়া যায়?', 'মেডিকেল ও ক্যাম্পাস এলাকায় চা-নাস্তা, শাহবাগ/চানখারপুল দিকে বিরিয়ানি, কাবাব ও বাংলা খাবার।'],
-        ['থাকার জন্য কোন এলাকা ভালো?', 'হাঁটার দূরত্ব চাইলে শাহবাগ; কেন্দ্রীয় ব্যবসা এলাকা চাইলে মতিঝিল/পল্টন; ক্যাফে-খাবারের বিকল্প চাইলে ধানমন্ডি।'],
+        ['একদিনে কী কী দেখা যায়?', 'শহীদ মিনার → কার্জন হল → দোয়েল চত্বর → টিএসসি → শাহবাগের জাতীয় জাদুঘর—বর্তমান প্রবেশ, হাঁটার অবস্থা ও জাদুঘরের সময় যাচাই করে বেছে নেওয়ার একটি সম্ভাব্য অর্ধ-দিনের পরিকল্পনা।'],
+        ['আশেপাশে কোথায় খাওয়া যায়?', 'মেডিকেল, ক্যাম্পাস, শাহবাগ বা চানখারপুল এলাকায় নিজের পথ অনুযায়ী খোঁজ করতে পারেন; কোনো বর্তমান দোকান, মেনু বা সময় এই গাইড যাচাই করেনি।'],
+        ['থাকার জন্য কোন এলাকা ভালো?', 'শাহবাগ, মতিঝিল/পল্টন ও ধানমন্ডি তুলনা করার প্রস্তাব। আবাসনের বর্তমান ঠিকানা, মূল্য, যাতায়াত ও নিজের চাহিদা যাচাই করে বাছুন।'],
       ],
     },
     en: {
       slug: 'nearby',
       title: 'Near Central Shaheed Minar — Attractions, Food and Where to Stay',
       description:
-        'Within walking distance of the Central Shaheed Minar: Curzon Hall, Doel Chattar, Suhrawardy Udyan, the Bangladesh National Museum, food around Shahbagh and the best areas to stay.',
+        'Within walking distance of the Central Shaheed Minar: Curzon Hall, Doel Chattar, Suhrawardy Udyan, the Bangladesh National Museum, meal-stop and accommodation planning checks.',
       h1: 'What to see near the Shaheed Minar',
       lead:
-        'The monument sits inside the University of Dhaka area, so one walk can combine the university’s historic architecture with the museum and gardens of Shahbagh. Below is a practical walking order.',
+        'The monument sits inside the University of Dhaka area, so, subject to current access and separate opening arrangements, you can consider combining the university’s historic architecture with the museum and gardens of Shahbagh. Below is a practical walking order.',
       sections: [
         {
           heading: 'What you can combine in one walk',
@@ -356,7 +356,7 @@ export const guides: Record<GuideId, Record<Locale, GuideContent>> = {
         {
           heading: 'Suggested walking order',
           paragraphs: [
-            'Shaheed Minar → Curzon Hall / Doel Chattar → TSC → Shahbagh (museum): this sequence also puts snack and lunch options within easy reach.',
+            'Choose among Shaheed Minar, Curzon Hall / Doel Chattar, TSC and Shahbagh according to current access and your mobility. Verify a meal stop and its hours separately.',
           ],
           bullets: [
             '1 · Shaheed Minar — main axis and the red disc',
@@ -368,24 +368,24 @@ export const guides: Record<GuideId, Record<Locale, GuideContent>> = {
         {
           heading: 'Food',
           paragraphs: [
-            'Around Dhaka Medical College, the university area and Shahbagh you will find plenty of simple meals, tea, biryani and local snacks.',
-            'Individual shop hours change quickly, so plan by type of food and area: tea, singara, paratha and rice around the campus and medical area; biryani, kebab and Bengali meals on the Shahbagh / Chankharpul side.',
+            'Consider looking for a meal stop around the medical college, university area or Shahbagh if it fits your route. This guide has not verified current venues, menus or opening hours.',
+            'Choose a snack or meal stop only after checking the current address, menu, price, hours and your dietary needs. These areas are search suggestions, not a verified venue directory.',
           ],
         },
         {
           heading: 'Where to stay',
           paragraphs: [
-            'Shahbagh: the most practical base if you want to reach the Shaheed Minar, the museum, the university area and Ramna on foot or with a very short ride.',
-            'Motijheel / Paltan: convenient for combining the city centre, the business district and Old Dhaka.',
-            'Dhanmondi: more cafés, food and accommodation choice, but you will need a short ride to the Shaheed Minar.',
+            'Shahbagh: an area to compare; verify the exact accommodation, current transport and walking conditions.',
+            'Motijheel / Paltan: candidates to compare with your other destinations; verify current accommodation and transport.',
+            'Dhanmondi: another area to compare; check current availability, transport cost and traffic.',
           ],
         },
       ],
       faq: [
         ['What is the closest attraction to the Shaheed Minar?', 'Curzon Hall and Doel Chattar — both are within walking distance in the University of Dhaka area.'],
-        ['What can I see in one day?', 'Shaheed Minar → Curzon Hall → Doel Chattar → TSC → the National Museum in Shahbagh is a comfortable half-day walk.'],
-        ['Where can I eat nearby?', 'Tea and snacks around the medical and campus area; biryani, kebab and Bengali meals on the Shahbagh / Chankharpul side.'],
-        ['Which area is best for staying?', 'Shahbagh if you want to walk; Motijheel / Paltan for the central business district; Dhanmondi for more cafés and accommodation choice.'],
+        ['What can I see in one day?', 'Shaheed Minar → Curzon Hall → Doel Chattar → TSC → the National Museum in Shahbagh is a possible half-day plan, depending on current access, walking conditions and museum opening.'],
+        ['Where can I eat nearby?', 'You could search around the medical college, campus, Shahbagh or Chankharpul according to your route; no current venues, menus or hours have been verified by this guide.'],
+        ['Which area is best for staying?', 'Shahbagh, Motijheel / Paltan and Dhanmondi are comparison candidates. Choose after checking the actual address, rates, transport and your needs.'],
       ],
     },
   },

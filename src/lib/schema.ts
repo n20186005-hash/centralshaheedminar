@@ -26,7 +26,7 @@ export function organizationSchema() {
     name: 'Central Shaheed Minar Guide',
     url: SITE,
     description:
-      'Independent, non-commercial visitor guide to the Central Shaheed Minar (কেন্দ্রীয় শহীদ মিনার) in Dhaka, Bangladesh.',
+      'Independent, unofficial, nonprofit tourism and educational information guide to the Central Shaheed Minar (কেন্দ্রীয় শহীদ মিনার) in Dhaka, Bangladesh.',
   };
 }
 
@@ -54,21 +54,7 @@ export function attractionSchema(locale: Locale, description: string) {
       longitude: ATTRACTION.geo.longitude,
     },
     hasMap: ATTRACTION.mapsUrl,
-    isAccessibleForFree: true,
     touristType: ['history', 'culture', 'language heritage'],
-    openingHoursSpecification: {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-      opens: '00:00',
-      closes: '23:59',
-    },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: ATTRACTION.rating.value,
-      reviewCount: ATTRACTION.rating.count,
-      bestRating: '5',
-      worstRating: '1',
-    },
     sameAs: [ATTRACTION.mapsUrl, 'https://en.banglapedia.org/index.php?title=Shaheed_Minar'],
   };
 }

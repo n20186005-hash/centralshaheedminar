@@ -7,4 +7,4 @@
 - Wide: https://commons.wikimedia.org/wiki/File:Central_Shaheed_Minar_Dhaka_(9).jpg
 - Alternate: https://commons.wikimedia.org/wiki/File:Central_Shaheed_Minar_Dhaka_(4).jpg
 
-ওয়েবপেজে ছবিগুলো মূল Wikimedia ফাইল URL থেকে দেখানো হয়েছে, কারণ build sandbox-এ বাইরের বাইনারি ফাইল ডাউনলোড বন্ধ ছিল।
+Local web derivatives are resized/compressed; displayed images may be cropped by the layout. The OG cover is cropped from the hero. Adaptations are distributed under CC BY-SA 3.0: https://creativecommons.org/licenses/by-sa/3.0/ . Sources checked 26 October 2026. The photographs depict November 2018 scenes, not current access or restoration conditions.

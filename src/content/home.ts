@@ -71,7 +71,7 @@ export const homeContent: Record<Locale, HomeContent> = {
       headingAccent: 'শহীদ মিনার',
       intro:
         'একটি স্থাপত্যের চেয়ে বেশি—বাংলা ভাষার মর্যাদা, আত্মত্যাগ এবং সাংস্কৃতিক পরিচয়ের দৃশ্যমান প্রতীক। ঢাকা মেডিকেল কলেজ ও ঢাকা বিশ্ববিদ্যালয় এলাকার হৃদয়ে দাঁড়িয়ে আছে জাতীয় স্মৃতির এই কেন্দ্র।',
-      chips: ['★ ৪.৬ · ২০,৮৯৭ পর্যালোচনা', 'প্রবেশমূল্য নেই', 'ঢাকা ১০০০'],
+      chips: ['Google Maps: ৪.৬/৫ · ২০,৯৩৭ · ২৬ অক্টোবর ২০২৬', 'প্রবেশের শর্ত নিশ্চিত করুন', 'ঢাকা ১০০০'],
       imageAlt: 'ঢাকার কেন্দ্রীয় শহীদ মিনারের বাস্তব দৃশ্য',
     },
     facts: {
@@ -128,7 +128,7 @@ export const homeContent: Record<Locale, HomeContent> = {
         {
           icon: '🎟️',
           title: 'টিকিট / খরচ',
-          text: 'প্রবেশমূল্য নেই। ফুল কিনতে চাইলে ব্যক্তিগত খরচ আলাদা। গাইড বাধ্যতামূলক নয়।',
+          text: 'প্রবেশের বর্তমান শর্ত ও ফি আগে যাচাই করুন। ফুল বা যাতায়াতের ব্যক্তিগত খরচ আলাদা হতে পারে।',
         },
         {
           icon: '🕰️',
@@ -204,14 +204,14 @@ export const homeContent: Record<Locale, HomeContent> = {
       food: {
         label: 'আশপাশের খাবার',
         title: 'পুরান ঢাকার স্বাদ থেকে ক্যাম্পাসের চা',
-        text: 'ঢাকা মেডিকেল কলেজ, বিশ্ববিদ্যালয় এলাকা ও শাহবাগের আশপাশে সহজ খাবার, চা, বিরিয়ানি ও স্থানীয় নাস্তার বহু বিকল্প আছে। নির্দিষ্ট দোকানের সময় দ্রুত বদলাতে পারে, তাই খাবারের ধরন ও এলাকা ধরে পরিকল্পনা করাই ভালো।',
+        text: 'খাবারের বিরতির জন্য মেডিকেল কলেজ, বিশ্ববিদ্যালয় এলাকা বা শাহবাগে আপনার পথের সঙ্গে মানানসই স্থান খুঁজতে পারেন। এই গাইড কোনো বর্তমান দোকান, মেনু বা খোলার সময় যাচাই করেনি। খাবারের ধরন, মূল্য, খাদ্যসংক্রান্ত চাহিদা ও প্রবেশসুবিধা সরাসরি যাচাই করে পরিকল্পনা করুন।',
         types: [
-          { label: 'ক্যাম্পাস/মেডিকেল এলাকা', value: 'চা · সিঙ্গারা · পরোটা · ভাত' },
-          { label: 'শাহবাগ/চানখারপুল দিক', value: 'বিরিয়ানি · কাবাব · বাংলা খাবার' },
+          { label: 'যাচাই করার নাস্তার ধারণা', value: 'চা · সিঙ্গারা · পরোটা · ভাত' },
+          { label: 'যাচাই করার খাবারের ধারণা', value: 'বিরিয়ানি · কাবাব · বাংলা খাবার' },
         ],
         plan: {
           title: 'খাবারের ছোট পরিকল্পনা',
-          text: 'শহীদ মিনার → কার্জন হল/দোয়েল চত্বর → শাহবাগ—এই ধারায় হাঁটলে পথে নাস্তা বা দুপুরের খাবারের বিকল্প সহজে পাওয়া যায়।',
+          text: 'শহীদ মিনার, কার্জন হল/দোয়েল চত্বর বা শাহবাগের পরিকল্পনার সঙ্গে খাবারের বিরতি রাখতে পারেন। পথ, বর্তমান প্রবেশ ও খোলা দোকান আগে যাচাই করুন; সবগুলি একই যাত্রায় রাখা জরুরি নয়।',
         },
       },
     },
@@ -219,9 +219,9 @@ export const homeContent: Record<Locale, HomeContent> = {
       label: 'থাকার জায়গা',
       title: 'কোন এলাকায় থাকবেন?',
       areas: [
-        { title: 'শাহবাগ', text: 'শহীদ মিনার, জাদুঘর, বিশ্ববিদ্যালয় এলাকা ও রমনা—পায়ে হাঁটা/স্বল্প যাত্রায় দেখতে চাইলে সবচেয়ে ব্যবহারিক।' },
-        { title: 'মতিঝিল / পল্টন', text: 'শহরের কেন্দ্র, ব্যবসায়িক এলাকা ও পুরান ঢাকার দিকে যাতায়াত মিলিয়ে নিতে চাইলে সুবিধাজনক।' },
-        { title: 'ধানমন্ডি', text: 'ক্যাফে, খাবার ও আবাসনের বেশি বিকল্প চান এবং শহীদ মিনারে স্বল্প গাড়ি/রাইডে যেতে আপত্তি নেই—এমন ভ্রমণকারীদের জন্য ভালো।' },
+        { title: 'শাহবাগ', text: 'বিশ্ববিদ্যালয় এলাকা ও জাদুঘর ভ্রমণের পরিকল্পনা করলে থাকার সম্ভাব্য এলাকা হিসেবে তুলনা করুন। নির্দিষ্ট আবাসনের ঠিকানা, বর্তমান যাতায়াত ও হাঁটার পথ যাচাই করুন।' },
+        { title: 'মতিঝিল / পল্টন', text: 'শহরের অন্য গন্তব্যের সঙ্গে মিলিয়ে থাকার এলাকা হিসেবে তুলনা করতে পারেন; নির্দিষ্ট ঠিকানা ও বর্তমান যাতায়াত যাচাই করুন।' },
+        { title: 'ধানমন্ডি', text: 'থাকার বিকল্প খুঁজলে এই এলাকাও তুলনায় রাখতে পারেন। বর্তমান প্রাপ্যতা, যাতায়াতের খরচ ও যানজট বিবেচনা করুন; স্বল্প যাত্রা ধরে নেবেন না।' },
       ],
       note: 'হোটেলের নাম, মূল্য ও কক্ষের প্রাপ্যতা দ্রুত বদলায়—বুকিংয়ের সময় সাম্প্রতিক রেটিং, বাতিলের নীতি ও যাতায়াতের সময় যাচাই করুন।',
     },
@@ -243,11 +243,11 @@ export const homeContent: Record<Locale, HomeContent> = {
       items: [
         [
           'কেন্দ্রীয় শহীদ মিনারে প্রবেশের টিকিট লাগে কি?',
-          'না। স্মৃতিসৌধটি সাধারণ দর্শনার্থীদের জন্য বিনামূল্যে উন্মুক্ত। বিশেষ রাষ্ট্রীয় বা নিরাপত্তাজনিত কর্মসূচির সময় প্রবেশপথ ও চলাচলে সাময়িক নিয়ন্ত্রণ থাকতে পারে।',
+          'ঢাকা বিশ্ববিদ্যালয়ের ২০২৪ সালের বিবরণ জনসাধারণের প্রবেশের কথা বলে। বর্তমান ফি বা প্রবেশের শর্ত নিশ্চিত করে না; যাত্রার আগে কর্তৃপক্ষের নির্দেশনা যাচাই করুন।',
         ],
         [
           'কেন্দ্রীয় শহীদ মিনার কি ২৪ ঘণ্টা দেখা যায়?',
-          'সাধারণভাবে উন্মুক্ত চত্বরটি সার্বক্ষণিক দেখা যায় বলে বিভিন্ন স্থানীয় তালিকায় উল্লেখ আছে। তবে ২১ ফেব্রুয়ারি ও বিশেষ অনুষ্ঠানে নিরাপত্তা ও জনসমাগমের কারণে প্রবেশব্যবস্থা বদলাতে পারে।',
+          '২৬ অক্টোবর ২০২৬ যাচাই করা মূল Google Maps তালিকায় সময় ছিল না। পাশের অন্য কোনো স্থাপনার ২৪ ঘণ্টার তালিকা এই স্মৃতিসৌধের সময় নয়। বর্তমান প্রবেশের সময় ও নিয়ন্ত্রণ নিশ্চিত করুন।',
         ],
         [
           'মেট্রোরেলে কীভাবে যাব?',
@@ -287,7 +287,7 @@ export const homeContent: Record<Locale, HomeContent> = {
       headingAccent: 'Shaheed Minar',
       intro:
         'More than a structure: the visible symbol of the dignity of the Bengali language, of sacrifice and of cultural identity. It stands at the heart of the Dhaka Medical College and University of Dhaka area.',
-      chips: ['★ 4.6 · 20,897 reviews', 'No entry fee', 'Dhaka 1000'],
+      chips: ['Google Maps: 4.6/5 · 20,937 · 26 October 2026', 'Confirm access conditions', 'Dhaka 1000'],
       imageAlt: 'Central Shaheed Minar in Dhaka',
     },
     facts: {
@@ -344,7 +344,7 @@ export const homeContent: Record<Locale, HomeContent> = {
         {
           icon: '🎟️',
           title: 'Tickets / cost',
-          text: 'There is no entry fee. Buying flowers is a personal expense. A guide is not required.',
+          text: 'Confirm current entry conditions and any charges before travelling. Flowers and transport may involve separate personal expenses.',
         },
         {
           icon: '🕰️',
@@ -420,14 +420,14 @@ export const homeContent: Record<Locale, HomeContent> = {
       food: {
         label: 'Food nearby',
         title: 'From Old Dhaka flavours to campus tea',
-        text: 'Around Dhaka Medical College, the university area and Shahbagh you will find plenty of simple meals, tea, biryani and local snacks. Individual shop hours change quickly, so plan by type of food and by area rather than by a single address.',
+        text: 'Consider looking for a meal stop around the medical college, university area or Shahbagh if it fits your route. This guide has not verified current venues, menus or opening hours. Check the actual address, menu, price, dietary needs and access before choosing.',
         types: [
-          { label: 'Campus / medical area', value: 'Tea · singara · paratha · rice' },
-          { label: 'Shahbagh / Chankharpul side', value: 'Biryani · kebab · Bengali meals' },
+          { label: 'Meal ideas to check', value: 'Tea · singara · paratha · rice' },
+          { label: 'Other meal ideas', value: 'Biryani · kebab · Bengali meals' },
         ],
         plan: {
           title: 'A short food plan',
-          text: 'Walking Shaheed Minar → Curzon Hall / Doel Chattar → Shahbagh puts snack and lunch options within easy reach along the way.',
+          text: 'You could include a meal break when planning Shaheed Minar, Curzon Hall / Doel Chattar or Shahbagh. Check the route, access and an open venue separately; you do not need to combine every stop.',
         },
       },
     },
@@ -435,9 +435,9 @@ export const homeContent: Record<Locale, HomeContent> = {
       label: 'Where to stay',
       title: 'Which area should you base yourself in?',
       areas: [
-        { title: 'Shahbagh', text: 'The most practical choice if you want to reach the Shaheed Minar, the museum, the university area and Ramna on foot or by a very short ride.' },
-        { title: 'Motijheel / Paltan', text: 'Convenient if you want to combine the city centre, the business district and Old Dhaka in one trip.' },
-        { title: 'Dhanmondi', text: 'Good if you want more cafés, food and accommodation choice and do not mind a short ride to the Shaheed Minar.' },
+        { title: 'Shahbagh', text: 'An area to compare if your plans include the university and museum. Check the exact accommodation address, current transport and walking conditions.' },
+        { title: 'Motijheel / Paltan', text: 'Compare this area with your other city destinations, checking exact accommodation addresses and current transport.' },
+        { title: 'Dhanmondi', text: 'Another area to compare when searching for accommodation. Verify availability, transport cost and traffic; do not assume a short journey.' },
       ],
       note: 'Hotel names, prices and room availability change quickly — check recent ratings, cancellation policies and the actual commute to the university area before booking.',
     },
@@ -459,11 +459,11 @@ export const homeContent: Record<Locale, HomeContent> = {
       items: [
         [
           'Is there an entry fee for the Central Shaheed Minar?',
-          'No. The monument is open free of charge for ordinary visitors. During special state or security programmes, entry routes and movement may be temporarily regulated.',
+          'A University of Dhaka report labelled 2024 describes public access, but does not confirm current fees or entry conditions. Check current authority instructions before travelling.',
         ],
         [
           'Is the Central Shaheed Minar open 24 hours?',
-          'Local listings generally describe the open courtyard as viewable at all hours. On 21 February and during special events, however, access arrangements can change because of security and crowds.',
+          'The main Google Maps listing checked on 26 October 2026 supplied no hours. A nearby separate shrine listing is not evidence of this monument being open 24 hours. Confirm current visiting arrangements.',
         ],
         [
           'How do I get there by metro?',

@@ -1,11 +1,14 @@
 /* কেন্দ্রীয় শহীদ মিনার — offline service worker */
-const VERSION = 'csm-v2';
+const VERSION = 'csm-v3';
 const CORE = [
   '/',
   '/en/',
   '/history/',
   '/visit/',
   '/nearby/',
+  '/en/history/',
+  '/en/visit/',
+  '/en/nearby/',
   '/manifest.webmanifest',
   '/icons/icon-192.png',
   '/icons/icon-512.png',
@@ -35,9 +38,9 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(
       fetch(req).then((res) => {
         const copy = res.clone();
-        caches.open(VERSION).then((cache) => cache.put(req, copy));
+        if (res.ok) caches.open(VERSION).then((cache) => cache.put(req, copy));
         return res;
-      }).catch(() => caches.match('/'))
+      }).catch(async () => (await caches.match(req)) || new Response('Offline — this page is not cached. / অফলাইন — এই পাতা সংরক্ষিত নেই।', {status: 503, headers: {'Content-Type': 'text/plain; charset=utf-8'}}))
     );
     return;
   }

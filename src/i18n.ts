@@ -77,12 +77,12 @@ export const ui: Record<Locale, Ui> = {
     ],
     footer: {
       about:
-        'এই ওয়েবসাইটটি একটি স্বাধীন ভ্রমণ-তথ্য গাইড; এটি কেন্দ্রীয় শহীদ মিনার, ঢাকা বিশ্ববিদ্যালয়, বাংলাদেশ সরকার বা কোনো সরকারি প্রতিষ্ঠানের অফিসিয়াল ওয়েবসাইট নয়।',
+        'এই ওয়েবসাইটটি একটি স্বাধীন, অলাভজনক পর্যটন ও শিক্ষামূলক তথ্য-গাইড; এটি কেন্দ্রীয় শহীদ মিনার, ঢাকা বিশ্ববিদ্যালয়, বাংলাদেশ সরকার বা কোনো সরকারি প্রতিষ্ঠানের অফিসিয়াল ওয়েবসাইট নয়।',
       linksLabel: 'বিষয়শ্রেণী',
       cookieSettings: 'কুকি পছন্দ',
       photoCredit:
         'ছবি: Salim Khandoker, Wikimedia Commons, CC BY-SA 3.0. ঐতিহাসিক তথ্যের মূল সূত্র: বাংলাদেশ ট্যুরিজম বোর্ড, বাংলাপিডিয়া ও ইউনেস্কো।',
-      copyright: 'এই ওয়েবসাইটে প্রদর্শিত সব ছবির মালিকানা ও কপিরাইট সংশ্লিষ্ট ফটোগ্রাফারের নিজস্ব। ছবিগুলো শুধু তথ্যগত উদ্দেশ্যে প্রদর্শিত হচ্ছে।',
+      copyright: 'ছবির ব্যবহার সংশ্লিষ্ট CC BY-SA 3.0 লাইসেন্সের অধীন; সূত্র, স্বীকৃতি ও পরিবর্তনের বিবরণ উপরের লিংকে।',
     },
     consent: {
       title: 'পরিমাপের কুকি',
@@ -130,12 +130,12 @@ export const ui: Record<Locale, Ui> = {
     ],
     footer: {
       about:
-        'This website is an independent travel-information guide. It is not the official website of the Central Shaheed Minar, the University of Dhaka, the Government of Bangladesh or any public institution.',
+        'This website is an independent, nonprofit tourism and educational information guide. It is not the official website of the Central Shaheed Minar, the University of Dhaka, the Government of Bangladesh or any public institution.',
       linksLabel: 'Sections',
       cookieSettings: 'Cookie preferences',
       photoCredit:
         'Photos: Salim Khandoker, Wikimedia Commons, CC BY-SA 3.0. Historical sources: Bangladesh Tourism Board, Banglapedia and UNESCO.',
-      copyright: 'All photographs remain the property of their respective photographers and are shown here for informational purposes only.',
+      copyright: 'Photographs are used under CC BY-SA 3.0; source, attribution and modification details are linked above.',
     },
     consent: {
       title: 'Measurement cookies',

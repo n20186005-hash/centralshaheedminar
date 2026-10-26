@@ -4,7 +4,7 @@
 
 - 孟加拉语：`/` `/history/` `/visit/` `/nearby/`
 - 英语：`/en/` `/en/history/` `/en/visit/` `/en/nearby/`
-- 每个页面都输出 `canonical` + `hreflang`（bn-BD / en / x-default），英语版用于承接国际查询。
+- 每个页面都输出 `canonical` + `hreflang`（bn-BD / en / x-default），各语言具有独立地址。
 
 ## 技术栈
 
@@ -17,7 +17,7 @@
 - Node.js 24.20.0
 - pnpm 12.3.4
 
-所有直接依赖均为精确版本，不使用浮动范围。单包项目未创建 `pnpm-workspace.yaml`。
+所有直接依赖均为精确版本，不使用浮动范围。`pnpm-workspace.yaml` 保留 esbuild/workerd 构建脚本拒绝策略；原生可选依赖按当前主机选择。
 
 ## 域名唯一配置点
 
@@ -28,14 +28,14 @@
 
 ## 内容组织
 
-- `src/data/site.ts` — 纪念碑的唯一事实源：名称、地址、坐标、Plus Code、地图链接、评分（4.6 / 20,897）、照片路径、GA4 ID，以及 SEO 站点名（`SITE_NAME`，格式：景点 + 城市 + 旅游指南）与 `withSiteName()`。
+- `src/data/site.ts` — 纪念碑的唯一事实源：名称、地址、坐标、Plus Code、地图链接、注明日期的第三方评分、照片路径、GA4 ID，以及 SEO 站点名（`SITE_NAME`，格式：景点 + 城市 + 旅游指南）与 `withSiteName()`。
 - `src/i18n.ts` — 语言列表、`localizedPath()`、`hreflangAlternates()` 与界面文案字典（导航、页脚、Cookie 提示等）。
 - `src/content/home.ts` — 首页全部文案（bn / en）。
 - `src/content/guides.ts` — 三个专题页（history / visit / nearby）的文案（bn / en）。
 - `src/lib/schema.ts` — JSON-LD 构造：WebSite、Organization、TouristAttraction + LandmarksOrHistoricalBuildings、FAQPage、BreadcrumbList。
 - `src/layouts/BaseLayout.astro` — TDK、canonical、hreflang、Open Graph / Twitter Card、JSON-LD、页头语言切换与页脚。
 
-新增语言时同步 `src/i18n.ts`、`src/content/*.ts` 两处即可，页面文件无需改动。
+现有八个正常页面及错误页保持静态输出。
 
 ## 图片
 

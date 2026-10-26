@@ -25,7 +25,7 @@ interface Props {
 const { locale, path, title, description, schema = [], navMode = 'pages' } = Astro.props;
 
 const site = Astro.site ? Astro.site.toString().replace(/\/$/, '') : undefined;
-const canonicalUrl = site ? new URL(path, `${site}/`).toString() : undefined;
+const canonicalUrl = site ? new URL(localizedPath(locale, path), `${site}/`).toString() : undefined;
 const alternates = hreflangAlternates(path);
 const otherLocale: Locale = locale === 'bn' ? 'en' : 'bn';
 const switchHref = localizedPath(otherLocale, path);
@@ -51,7 +51,7 @@ const jsonLd = [websiteSchema(locale), organizationSchema(), ...schema];
     <meta name="description" content={description} />
     {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
     {alternates.map((alt) => <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />)}
-    <link rel="alternate" hreflang={otherLocale === 'bn' ? 'bn-BD' : 'en'} href={switchHref} title={ui[otherLocale].langName} />
+
 
     <link rel="icon" href="/icons/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/icons/favicon-32x32.png" sizes="32x32" />
@@ -124,8 +124,10 @@ const jsonLd = [websiteSchema(locale), organizationSchema(), ...schema];
           </div>
         </div>
         <div class="mt-8 border-t border-stone-300 pt-5 text-xs leading-5 text-stone-500">
-          <p>{t.footer.photoCredit}</p>
+          <p>{t.footer.photoCredit} <a href="/media/PHOTO-SOURCES.md">{locale === 'bn' ? 'প্রতি ছবির উৎস ও পরিবর্তন' : 'Individual image sources and changes'}</a> · <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a></p>
+          <p>{locale === 'bn' ? 'তথ্য যাচাই: ২৬ অক্টোবর ২০২৬। Google Maps-এর মূল্যায়ন বহিরাগত তালিকার স্ন্যাপশট, এই গাইডের সংগ্রহ নয়।' : 'Information checked: 26 October 2026. Google Maps ratings are an external listing snapshot, not reviews collected by this guide.'}</p>
           <p class="mt-2">{t.footer.copyright}</p>
+          <p class="mt-2">Salim Khandoker · Wikimedia Commons · <a href="https://commons.wikimedia.org/wiki/File:Central_Shahid_Minar_Dhaka_(1).jpg">Hero / OG</a> · <a href="https://commons.wikimedia.org/wiki/File:Central_Shaheed_Minar_Dhaka_(7).jpg">Portrait</a> · <a href="https://commons.wikimedia.org/wiki/File:Central_Shaheed_Minar_Dhaka_(9).jpg">Wide</a> · <a href="https://commons.wikimedia.org/wiki/File:Central_Shaheed_Minar_Dhaka_(4).jpg">Alternate</a>. {locale === 'bn' ? 'ওয়েব সংস্করণে আকার/কমপ্রেশন ও প্রদর্শনের ক্রপ পরিবর্তিত; OG কেন্দ্রীয় ক্রপ। পরিবর্তিত ছবিও CC BY-SA 3.0।' : 'Web versions resized/compressed and cropped for display; OG uses a crop. Adaptations remain CC BY-SA 3.0.'}</p>
         </div>
       </div>
     </footer>
@@ -133,6 +135,8 @@ const jsonLd = [websiteSchema(locale), organizationSchema(), ...schema];
     <div id="cookie-banner" class="fixed inset-x-4 bottom-4 z-50 hidden max-w-xl rounded-3xl border border-stone-700 bg-[#171515] p-5 text-white shadow-2xl sm:left-auto sm:right-5">
       <p class="font-black">{t.consent.title}</p>
       <p class="mt-2 text-sm leading-6 text-stone-300">{t.consent.body}</p>
+      <p id="consent-status" role="status" class="mt-3 text-sm" aria-live="polite"></p>
+      <p class="mt-3 text-sm">{locale === 'bn' ? 'অনুমতি সফলভাবে সংরক্ষিত হলে GA চালু হতে পারে। প্রত্যাখ্যান পূর্বে পাঠানো তথ্য ফেরায় না। হোস্টিংয়ের Cloudflare performance beacon এই GA পছন্দের বাইরে।' : 'GA may start after permission is successfully saved. Declining cannot recall data already sent. A Cloudflare hosting performance beacon is separate from this GA choice.'} <a href="https://developers.cloudflare.com/web-analytics/data-metrics/data-origin-and-collection/">Cloudflare</a></p>
       <div class="mt-4 flex gap-3">
         <button data-consent="accept" class="focus-ring rounded-full bg-[#c5222a] px-5 py-2 text-sm font-bold">{t.consent.accept}</button>
         <button data-consent="deny" class="focus-ring rounded-full border border-white/25 px-5 py-2 text-sm font-bold">{t.consent.deny}</button>
@@ -141,46 +145,11 @@ const jsonLd = [websiteSchema(locale), organizationSchema(), ...schema];
 
     <script>
       import { GA4_ID } from '../data/site';
-      (() => {
-        type GAWindow = Window & {
-          __csmGA?: boolean;
-          dataLayer?: unknown[];
-          gtag?: (...args: unknown[]) => void;
-        };
-        const w = window as GAWindow;
-        const key = 'csm-analytics-consent';
-        const id = GA4_ID;
-        const banner = document.getElementById('cookie-banner');
-        const settings = document.getElementById('cookie-settings');
-        const loadGA = () => {
-          if (w.__csmGA) return;
-          w.__csmGA = true;
-          w.dataLayer = w.dataLayer || [];
-          w.gtag = function (...args: unknown[]) { (w.dataLayer as unknown[]).push(args); };
-          w.gtag('js', new Date());
-          w.gtag('config', id, { anonymize_ip: true });
-          const s = document.createElement('script');
-          s.async = true;
-          s.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
-          document.head.appendChild(s);
-        };
-        const set = (value) => {
-          localStorage.setItem(key, value);
-          banner?.classList.add('hidden');
-          if (value === 'accepted') loadGA();
-        };
-        const current = localStorage.getItem(key);
-        if (current === 'accepted') loadGA();
-        else if (!current) banner?.classList.remove('hidden');
-        banner?.querySelector('[data-consent="accept"]')?.addEventListener('click', () => set('accepted'));
-        banner?.querySelector('[data-consent="deny"]')?.addEventListener('click', () => set('denied'));
-        settings?.addEventListener('click', () => banner?.classList.remove('hidden'));
-        if ('serviceWorker' in navigator) {
-          window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/sw.js').catch(() => {});
-          });
-        }
-      })();
+      import { initAnalytics } from '../lib/analytics';
+      initAnalytics(GA4_ID);
+      if ('serviceWorker' in navigator) window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(() => {});
+      });
     </script>
   </body>
 </html>
