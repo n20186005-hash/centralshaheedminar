@@ -42,8 +42,8 @@ export const ATTRACTION = {
   mapsUrl: 'https://maps.app.goo.gl/ySi18KGioTbQ5b8d9',
   mapsEmbed:
     'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6249.30973029436!2d90.3940500770538!3d23.7272379786862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8e89cbec039%3A0xe403f93b9b07d016!2sCentral%20Shaheed%20Minar!5e1!3m2!1sbn!2sBD!4v1788751034003!5m2!1sbn!2sBD',
-  /** গুগল ম্যাপ তালিকার সর্বশেষ সারাংশ (২০২৬-১০-২৬ অনুযায়ী)। */
-  rating: { value: '4.6', count: 20937 },
+  /** গুগল ম্যাপ তালিকার সর্বশেষ সারাংশ (২০২৬-১১-০৩ অনুযায়ী)। */
+  rating: { value: '4.6', count: 20952 },
   ticket: {
     bn: 'প্রবেশের শর্ত নিশ্চিত করুন',
     en: 'Confirm access conditions',

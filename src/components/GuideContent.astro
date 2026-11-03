@@ -1,6 +1,7 @@
 ---
 import { ATTRACTION, SOURCES } from '../data/site';
 import { guides, guideNavLabel, type GuideId } from '../content/guides';
+import { topicsBySection, type TopicSection } from '../content/topics';
 import { localizedPath, ui, type Locale } from '../i18n';
 
 interface Props {
@@ -16,6 +17,16 @@ const sourceLinks = SOURCES.map((source) => ({ href: source.href, label: source[
 const siblings = (Object.keys(guides) as GuideId[])
   .filter((key) => key !== id)
   .map((key) => ({ href: localizedPath(locale, `/${key}/`), label: guideNavLabel[key][locale], title: guides[key][locale].h1 }));
+
+const topicSections: Record<GuideId, TopicSection[]> = {
+  history: ['history'],
+  visit: ['visit', 'guides'],
+  nearby: ['nearby', 'itineraries', 'food', 'planning', 'stay'],
+};
+const topicLinks = topicSections[id]
+  .flatMap((section) => topicsBySection(section))
+  .map((topic) => ({ href: localizedPath(locale, `/${topic.path}/`), label: topic[locale].h1, summary: topic[locale].description }));
+const topicsLabel = locale === 'bn' ? 'এই শ্রেণির বিস্তারিত পাতা' : 'In-depth pages in this section';
 ---
 
 <section class="border-b border-stone-300/70 bg-[#141313] text-white">
@@ -32,7 +43,7 @@ const siblings = (Object.keys(guides) as GuideId[])
 
 <section class="py-16 lg:py-24">
   <div class="mx-auto max-w-4xl px-5 lg:px-8">
-    <p class="mb-8 text-sm leading-7 text-stone-600">{locale === 'bn' ? 'তথ্য যাচাই: ২৬ অক্টোবর ২০২৬। বর্তমান প্রবেশ, ফি, চলাচল ও আশপাশের স্থানগুলির সময় আলাদাভাবে নিশ্চিত করুন। প্রথম স্মৃতিস্তম্ভ ভাঙার দিন নিয়ে সূত্রভেদ আছে: ট্যুরিজম বোর্ড ২৪ ফেব্রুয়ারি, বাংলাপিডিয়া ২৬ ফেব্রুয়ারি ১৯৫২ বলে।' : 'Checked 26 October 2026. Confirm current access, charges, travel routes and separate opening arrangements for nearby places. Sources differ on the demolition of the first memorial: the Tourism Board gives 24 February, Banglapedia 26 February 1952.'}</p>
+    <p class="mb-8 text-sm leading-7 text-stone-600">{locale === 'bn' ? 'তথ্য যাচাই: ৩ নভেম্বর ২০২৬। বর্তমান প্রবেশ, ফি, চলাচল ও আশপাশের স্থানগুলির সময় আলাদাভাবে নিশ্চিত করুন। প্রথম স্মৃতিস্তম্ভ ভাঙার দিন নিয়ে সূত্রভেদ আছে: ট্যুরিজম বোর্ড ২৪ ফেব্রুয়ারি, বাংলাপিডিয়া ২৬ ফেব্রুয়ারি ১৯৫২ বলে।' : 'Checked 3 November 2026. Confirm current access, charges, travel routes and separate opening arrangements for nearby places. Sources differ on the demolition of the first memorial: the Tourism Board gives 24 February, Banglapedia 26 February 1952.'}</p>
     <div class="space-y-12">
       {
         c.sections.map((section) => (
@@ -74,6 +85,25 @@ const siblings = (Object.keys(guides) as GuideId[])
     </div>
   </div>
 </section>
+
+{
+  topicLinks.length > 0 && (
+    <section class="py-16 lg:py-24">
+      <div class="mx-auto max-w-4xl px-5 lg:px-8">
+        <p class="section-label">{t.labels.related}</p>
+        <h2 class="mt-3 text-3xl font-black sm:text-4xl">{topicsLabel}</h2>
+        <div class="mt-8 grid gap-4 sm:grid-cols-2">
+          {topicLinks.map((link) => (
+            <a href={link.href} class="memorial-card focus-ring block rounded-2xl p-5 no-underline">
+              <span class="block text-lg font-black leading-snug text-neutral-900">{link.label}</span>
+              <span class="mt-2 block text-sm leading-7 text-stone-600">{link.summary}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
 
 <section class="py-16 lg:py-24">
   <div class="mx-auto grid max-w-4xl gap-8 px-5 lg:px-8">

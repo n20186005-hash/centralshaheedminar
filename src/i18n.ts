@@ -58,6 +58,7 @@ type Ui = {
     sources: string;
     faq: string;
     faqLabel: string;
+    related: string;
     onThisPage: string;
     backHome: string;
   };
@@ -113,6 +114,7 @@ export const ui: Record<Locale, Ui> = {
       sources: 'স্মৃতি বোঝার জন্য উৎসে ফিরে যান',
       faq: 'যাওয়ার আগে যা জানা ভালো',
       faqLabel: 'সাধারণ প্রশ্ন',
+      related: 'সম্পর্কিত পাতা',
       onThisPage: 'এই পাতায়',
       backHome: 'মূল পাতায় ফিরুন',
     },
@@ -166,6 +168,7 @@ export const ui: Record<Locale, Ui> = {
       sources: 'Go back to the sources to understand the memorial',
       faq: 'Good to know before you go',
       faqLabel: 'Frequently asked questions',
+      related: 'Related pages',
       onThisPage: 'On this page',
       backHome: 'Back to home',
     },

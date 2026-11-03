@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TopicContent from '../../components/TopicContent.astro';
+import { allTopics } from '../../content/topics';
+import { withSiteName } from '../../data/site';
+import { breadcrumbSchema, faqSchema } from '../../lib/schema';
+import { SITE } from '../../i18n';
+
+export function getStaticPaths() {
+  return allTopics.map((topic) => {
+    const [section, slug] = topic.path.split('/');
+    return { params: { section, slug }, props: { topic } };
+  });
+}
+
+const locale = 'bn' as const;
+const { topic } = Astro.props;
+const content = topic.bn;
+const url = `${SITE}/${topic.path}/`;
+---
+
+<BaseLayout
+  locale={locale}
+  path={`/${topic.path}/`}
+  title={withSiteName(locale, content.seoTitle)}
+  description={content.description}
+  schema={[
+    faqSchema(content.faq),
+    breadcrumbSchema([
+      { name: 'প্রচ্ছদ', url: `${SITE}/` },
+      { name: content.h1, url },
+    ]),
+  ]}
+>
+  <TopicContent locale={locale} topic={topic} />
+</BaseLayout>

@@ -71,7 +71,7 @@ export const homeContent: Record<Locale, HomeContent> = {
       headingAccent: 'শহীদ মিনার',
       intro:
         'একটি স্থাপত্যের চেয়ে বেশি—বাংলা ভাষার মর্যাদা, আত্মত্যাগ এবং সাংস্কৃতিক পরিচয়ের দৃশ্যমান প্রতীক। ঢাকা মেডিকেল কলেজ ও ঢাকা বিশ্ববিদ্যালয় এলাকার হৃদয়ে দাঁড়িয়ে আছে জাতীয় স্মৃতির এই কেন্দ্র।',
-      chips: ['Google Maps: ৪.৬/৫ · ২০,৯৩৭ · ২৬ অক্টোবর ২০২৬', 'প্রবেশের শর্ত নিশ্চিত করুন', 'ঢাকা ১০০০'],
+      chips: ['Google Maps: ৪.৬/৫ · ২০,৯৫২ · ৩ নভেম্বর ২০২৬', 'প্রবেশের শর্ত নিশ্চিত করুন', 'ঢাকা ১০০০'],
       imageAlt: 'ঢাকার কেন্দ্রীয় শহীদ মিনারের বাস্তব দৃশ্য',
     },
     facts: {
@@ -247,7 +247,7 @@ export const homeContent: Record<Locale, HomeContent> = {
         ],
         [
           'কেন্দ্রীয় শহীদ মিনার কি ২৪ ঘণ্টা দেখা যায়?',
-          '২৬ অক্টোবর ২০২৬ যাচাই করা মূল Google Maps তালিকায় সময় ছিল না। পাশের অন্য কোনো স্থাপনার ২৪ ঘণ্টার তালিকা এই স্মৃতিসৌধের সময় নয়। বর্তমান প্রবেশের সময় ও নিয়ন্ত্রণ নিশ্চিত করুন।',
+          '৩ নভেম্বর ২০২৬ যাচাই করা মূল Google Maps তালিকায় সময় ছিল না। পাশের অন্য কোনো স্থাপনার ২৪ ঘণ্টার তালিকা এই স্মৃতিসৌধের সময় নয়। বর্তমান প্রবেশের সময় ও নিয়ন্ত্রণ নিশ্চিত করুন।',
         ],
         [
           'মেট্রোরেলে কীভাবে যাব?',
@@ -287,7 +287,7 @@ export const homeContent: Record<Locale, HomeContent> = {
       headingAccent: 'Shaheed Minar',
       intro:
         'More than a structure: the visible symbol of the dignity of the Bengali language, of sacrifice and of cultural identity. It stands at the heart of the Dhaka Medical College and University of Dhaka area.',
-      chips: ['Google Maps: 4.6/5 · 20,937 · 26 October 2026', 'Confirm access conditions', 'Dhaka 1000'],
+      chips: ['Google Maps: 4.6/5 · 20,952 · 3 November 2026', 'Confirm access conditions', 'Dhaka 1000'],
       imageAlt: 'Central Shaheed Minar in Dhaka',
     },
     facts: {
@@ -463,7 +463,7 @@ export const homeContent: Record<Locale, HomeContent> = {
         ],
         [
           'Is the Central Shaheed Minar open 24 hours?',
-          'The main Google Maps listing checked on 26 October 2026 supplied no hours. A nearby separate shrine listing is not evidence of this monument being open 24 hours. Confirm current visiting arrangements.',
+          'The main Google Maps listing checked on 3 November 2026 supplied no hours. A nearby separate shrine listing is not evidence of this monument being open 24 hours. Confirm current visiting arrangements.',
         ],
         [
           'How do I get there by metro?',

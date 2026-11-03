@@ -5,30 +5,32 @@
 - package.json 直接依赖均为精确版本，无 `latest`、`*`、`^`、`~`。
 - `packageManager` 与 `engines.pnpm` 固定为 pnpm 12.3.4。
 - `.node-version` 与 `engines.node` 固定为 Node.js 24.20.0。
-- 单包项目没有 `pnpm-workspace.yaml`。
-- 域名只在 `astro.config.mjs` 的 `siteUrl` 一处配置；当前为空。
-- site 为空时 sitemap 集成不启用，canonical / og:url 不输出占位 URL。
-- 源码扫描未发现被禁止的占位域名/浏览器扩展协议。
-- Google Maps iframe 已改为孟加拉语 / Bangladesh 地区参数。
+- `pnpm-workspace.yaml` 仅用于 `allowBuilds`（esbuild / workerd 构建脚本开关），不是多包工作区。
+- 域名只在 `astro.config.mjs` 的 `siteUrl` 一处配置；当前为 `https://centralshaheedminar.com`，sitemap 集成随之启用。
+- canonical / hreflang / og:url 均从 `src/i18n.ts` 的 `SITE` 与 `localizedPath()` 推导，无占位域名。
+- Google Maps iframe 已使用孟加拉语 / Bangladesh 地区参数。
 - GA4 仅在用户同意分析 Cookie 后加载。
 - Logo / favicon 使用同一白柱 + 红日符号体系，含 SVG、16×16、32×32、180×180。
 
-## 当前环境阻断，未能完成的强制验收
+## 环境与构建验证（2026-11-03 已解除阻断）
 
-本执行容器没有可用的外部 DNS / npm registry 访问，且容器内 Node 为 22.16.0，而项目按要求固定 Node 24.20.0。
+先前的“环境阻断”前提已不成立。本次在便携 Node 24.20.0（`H:\tools\node-v24.20.0-win-x64`，位于仓库之外）下完成：
 
-尝试获取项目指定的 pnpm 12.3.4 时，Corepack 失败于：
+1. `pnpm install`（pnpm 12.3.4），依赖树完整，四大依赖版本与 package.json 一致。
+2. `pnpm check` → `astro check`，32 个文件 **0 errors / 0 warnings / 0 hints**。
+3. `pnpm build` → **91 个页面**构建成功，`sitemap-index.xml` 与 `sitemap-0.xml` 生成。
 
-```text
-getaddrinfo EAI_AGAIN registry.npmjs.org
-```
+## 本次新增内容
 
-因此当前环境无法：
+- 报告 41 个候选页已全部落地（每条均含 bn / en 双语、facts、sections、faq、sources 与 2–4 条上下文内链），双语共 82 个页面：
+  - `history/` 11、`visit/` 9、`guides/` 6、`nearby/` 7、`itineraries/` 3、`food/` 3、`planning/` 1、`stay/` 1。
+- 路由：`src/pages/[section]/[slug].astro`（bn 根路径）与 `src/pages/en/[section]/[slug].astro`（en 镜像）。
+- 渲染组件：`src/components/TopicContent.astro`（面包屑、事实栏、正文、FAQ、相关内链、权威来源、核实日期）。
+- 集群内链闭环：三个总览页（`history`、`visit`、`nearby`）通过 `GuideContent.astro` 列出其下属专题页（history 11、visit+guides 15、nearby+itineraries+food+planning+stay 15），bn / en 双语一致。
+- 数据修正：Google Maps 评分计数由 20,937 更新为 **20,952**，核实日期更新为 **2026-11-03**（`src/data/site.ts` 及页脚 / 首页 / 指南页文案同步）。
+- 多语言纯净度已校验：构建产物中 en 页正文无孟加拉文字符（181 处孟加拉字符均为语言切换等公共模板），bn 页正文无英文正文段；`history/`、`visit/`、`guides/`、`nearby/`、`food/`、`practical/` 内容文件已扫描，无其他文字系统混入。
 
-1. 生成真实、完整、与依赖树同步的 `pnpm-lock.yaml`；
-2. 执行 `CI=1 corepack pnpm install --frozen-lockfile`；
-3. 执行 `pnpm check` 与 `pnpm build`；
-4. 对 `dist/` 执行最终 grep / sitemap 产物检查；
-5. 将 Wikimedia Commons 的真实 JPG 二进制下载到 `public/media/`。
+## 仍需外部确认的事项
 
-为避免伪造验收结果，本包没有放入手写或不完整的 lockfile，也没有声称这些命令已经通过。
+- 引用来源均为可访问的权威链接（Banglapedia、UNESCO、Bangladesh National Museum、University of Dhaka、DMTCL、Dhaka Medical College、Bangladesh Tourism Board、Creative Commons），但第三方站点内容可能变动。
+- 专题页不写具体票价、步行分钟数、距离、商家名或无障碍设施细节；`2 月 21 日入口`、`无障碍`、`餐饮`、`休息设施`、`住宿` 五类页面只写长期有效的判断原则与核实方法，具体数值与店名需现场或官方渠道核实后再补。

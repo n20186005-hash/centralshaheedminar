@@ -159,7 +159,7 @@ export const guides: Record<GuideId, Record<Locale, GuideContent>> = {
         {
           heading: 'খোলার সময় ও প্রবেশমূল্য',
           paragraphs: [
-            '২৬ অক্টোবর ২০২৬ যাচাই করা মূল Google Maps তালিকায় খোলার সময় দেওয়া ছিল না। ঢাকা বিশ্ববিদ্যালয়ের ২০২৪ সালের বিবরণ জনসাধারণের প্রবেশের কথা বলে, কিন্তু বর্তমান ঘণ্টা বা ফি নিশ্চিত করে না। যাওয়ার আগে বর্তমান প্রবেশের শর্ত যাচাই করুন।',
+            '৩ নভেম্বর ২০২৬ যাচাই করা মূল Google Maps তালিকায় খোলার সময় দেওয়া ছিল না। ঢাকা বিশ্ববিদ্যালয়ের ২০২৪ সালের বিবরণ জনসাধারণের প্রবেশের কথা বলে, কিন্তু বর্তমান ঘণ্টা বা ফি নিশ্চিত করে না। যাওয়ার আগে বর্তমান প্রবেশের শর্ত যাচাই করুন।',
             'দীর্ঘ ছুটি বা বিশেষ তারিখে যাওয়ার আগে সেদিনের ব্যবস্থা যাচাই করাই নিরাপদ।',
           ],
         },
@@ -229,7 +229,7 @@ export const guides: Record<GuideId, Record<Locale, GuideContent>> = {
         {
           heading: 'Opening hours and entry fee',
           paragraphs: [
-            'The main Google Maps listing checked on 26 October 2026 supplied no opening hours. A University of Dhaka report labelled 2024 describes public access, but does not establish current hours or fees. Confirm current access arrangements before travelling.',
+            'The main Google Maps listing checked on 3 November 2026 supplied no opening hours. A University of Dhaka report labelled 2024 describes public access, but does not establish current hours or fees. Confirm current access arrangements before travelling.',
             'On long holidays or special dates it is safer to check that day’s arrangements before setting out.',
           ],
         },

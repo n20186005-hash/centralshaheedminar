@@ -1,0 +1,169 @@
+---
+import { ATTRACTION } from '../data/site';
+import { getTopic, sectionLabels, type Topic, type TopicSection } from '../content/topics';
+import { localizedPath, type Locale } from '../i18n';
+
+interface Props {
+  locale: Locale;
+  topic: Topic;
+}
+
+const { locale, topic } = Astro.props;
+const c = topic[locale];
+const t = locale === 'bn'
+  ? {
+      breadcrumb: 'রুট',
+      home: 'প্রচ্ছদ',
+      faqLabel: 'সাধারণ প্রশ্ন',
+      faq: 'যাওয়ার আগে যা জানা ভালো',
+      sources: 'বিশ্বস্ত তথ্যসূত্র',
+      related: 'সম্পর্কিত পাতা',
+      backHome: 'মূল পাতায় ফিরুন',
+      checked: 'তথ্য যাচাই: ৩ নভেম্বর ২০২৬।',
+      verify:
+        'প্রবেশের শর্ত, খোলার সময়, ভাড়া ও আশপাশের স্থানের সময় বদলাতে পারে—যাওয়ার আগে সর্বশেষ তথ্য যাচাই করে নিন।',
+    }
+  : {
+      breadcrumb: 'Breadcrumb',
+      home: 'Home',
+      faqLabel: 'Frequently asked questions',
+      faq: 'Good to know before you go',
+      sources: 'Trusted sources',
+      related: 'Related pages',
+      backHome: 'Back to home',
+      checked: 'Information checked: 3 November 2026.',
+      verify:
+        'Access conditions, opening hours, fares and nearby opening arrangements can change — confirm the latest details before you travel.',
+    };
+
+const sectionLabel = sectionLabels[topic.section][locale];
+const homeHref = localizedPath(locale, '/');
+const sectionOverview: Record<TopicSection, string> = {
+  history: '/history/',
+  visit: '/visit/',
+  guides: '/visit/',
+  nearby: '/nearby/',
+  itineraries: '/nearby/',
+  food: '/nearby/',
+  planning: '/visit/',
+  stay: '/nearby/',
+};
+const sectionHref = localizedPath(locale, sectionOverview[topic.section]);
+
+const related = topic.related
+  .map((path) => getTopic(path))
+  .filter((item): item is Topic => Boolean(item))
+  .map((item) => ({
+    href: localizedPath(locale, `/${item.path}/`),
+    label: item[locale].h1,
+    section: sectionLabels[item.section][locale],
+  }));
+---
+
+<section class="border-b border-stone-300/70 bg-[#141313] text-white">
+  <div class="mx-auto max-w-4xl px-5 py-16 lg:px-8 lg:py-24">
+    <nav aria-label={t.breadcrumb} class="text-sm text-stone-400">
+      <a href={homeHref} class="hover:text-white">{t.home}</a>
+      <span class="px-2">/</span>
+      <a href={sectionHref} class="hover:text-white">{sectionLabel}</a>
+      <span class="px-2">/</span>
+      <span class="text-stone-200">{c.h1}</span>
+    </nav>
+    <h1 class="mt-6 text-4xl font-black leading-tight sm:text-5xl">{c.h1}</h1>
+    <p class="mt-6 max-w-3xl text-lg leading-8 text-stone-300">{c.lead}</p>
+  </div>
+</section>
+
+<section class="border-b border-stone-300/70 bg-[#141313] text-white">
+  <div class="mx-auto grid max-w-4xl grid-cols-2 gap-px bg-white/10 sm:grid-cols-4">
+    {
+      c.facts.map((fact) => (
+        <div class="bg-[#141313] p-5">
+          <p class="text-xs text-stone-400">{fact.label}</p>
+          <p class="mt-1 font-bold">{fact.value}</p>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<section class="py-16 lg:py-24">
+  <div class="mx-auto max-w-4xl px-5 lg:px-8">
+    <div class="space-y-12">
+      {
+        c.sections.map((section) => (
+          <article>
+            <h2 class="text-2xl font-black sm:text-3xl">{section.heading}</h2>
+            {section.paragraphs.map((paragraph) => (
+              <p class="mt-4 leading-8 text-stone-700">{paragraph}</p>
+            ))}
+            {section.bullets && (
+              <ul class="mt-5 space-y-3">
+                {section.bullets.map((bullet) => (
+                  <li class="memorial-card rounded-2xl p-4 leading-7 text-stone-700">{bullet}</li>
+                ))}
+              </ul>
+            )}
+          </article>
+        ))
+      }
+    </div>
+    <p class="mt-12 rounded-2xl border border-stone-300 bg-white/60 p-5 text-sm leading-7 text-stone-600">{t.checked} {t.verify}</p>
+  </div>
+</section>
+
+<section id="faq" class="border-y border-stone-300/70 bg-white/50 py-16 lg:py-24">
+  <div class="mx-auto max-w-4xl px-5 lg:px-8">
+    <p class="section-label">{t.faqLabel}</p>
+    <h2 class="mt-3 text-3xl font-black sm:text-4xl">{t.faq}</h2>
+    <div class="mt-8 divide-y divide-stone-300 border-y border-stone-300">
+      {
+        c.faq.map(([question, answer]) => (
+          <details class="group py-5">
+            <summary class="focus-ring flex cursor-pointer list-none items-center justify-between gap-5 text-lg font-black">
+              <span>{question}</span>
+              <span class="text-[#c5222a] transition group-open:rotate-45">＋</span>
+            </summary>
+            <p class="max-w-3xl pt-4 leading-7 text-stone-700">{answer}</p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<section class="py-16 lg:py-24">
+  <div class="mx-auto grid max-w-4xl gap-8 px-5 lg:px-8">
+    {
+      related.length > 0 && (
+        <div>
+          <p class="section-label">{t.related}</p>
+          <div class="mt-5 grid gap-4 sm:grid-cols-2">
+            {related.map((item) => (
+              <a href={item.href} class="memorial-card focus-ring block rounded-2xl p-5 no-underline hover:border-[#a31d24]">
+                <p class="text-xs font-black uppercase tracking-[.14em] text-[#a31d24]">{item.section}</p>
+                <p class="mt-2 text-lg font-black text-neutral-900">{item.label}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      )
+    }
+    <div class="relative overflow-hidden rounded-[2rem] bg-neutral-950 text-white">
+      <img src={ATTRACTION.photos.alt} alt={ATTRACTION.name[locale]} class="absolute inset-0 h-full w-full object-cover opacity-35" loading="lazy" />
+      <div class="relative p-8 sm:p-10">
+        <p class="text-xs font-black uppercase tracking-[.18em] text-red-400">{t.sources}</p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          {
+            c.sources.map((source) => (
+              <a href={source.href} rel="noopener" class="focus-ring rounded-full border border-white/30 px-5 py-3 font-bold no-underline hover:bg-white hover:text-black">{source.label}</a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-wrap items-center gap-4">
+      <a href={homeHref} class="focus-ring rounded-full bg-neutral-950 px-5 py-3 font-bold text-white no-underline">{t.backHome}</a>
+    </div>
+  </div>
+</section>
